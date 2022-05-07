@@ -21,16 +21,18 @@ function EditPost({ item: post }) {
     const date =
       currentDate.getFullYear() +
       "/" +
+      (currentDate.getMonth() + 1 <= 9 ? 0 : "") +
       (currentDate.getMonth() + 1) +
       "/" +
+      (currentDate.getDate() + 1 <= 9 ? 0 : "") +
       currentDate.getDate();
 
     const time =
+      (currentDate.getHours() <= 9 ? 0 : "") +
       currentDate.getHours() +
       ":" +
-      currentDate.getMinutes() +
-      ":" +
-      currentDate.getSeconds();
+      (currentDate.getMinutes() <= 9 ? 0 : "") +
+      currentDate.getMinutes();
 
     const postDoc = doc(db, "posts", post.id);
     const updatedPost = {

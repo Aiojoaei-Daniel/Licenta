@@ -33,16 +33,18 @@ function PostForm() {
     const date =
       currentDate.getFullYear() +
       "/" +
+      (currentDate.getMonth() + 1 <= 9 ? 0 : "") +
       (currentDate.getMonth() + 1) +
       "/" +
+      (currentDate.getDate() + 1 <= 9 ? 0 : "") +
       currentDate.getDate();
 
     const time =
+      (currentDate.getHours() <= 9 ? 0 : "") +
       currentDate.getHours() +
       ":" +
-      currentDate.getMinutes() +
-      ":" +
-      currentDate.getSeconds();
+      (currentDate.getMinutes() <= 9 ? 0 : "") +
+      currentDate.getMinutes();
 
     try {
       if (newTitle.length > 2 && newMessage.length > 5 && type !== "") {
