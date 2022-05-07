@@ -60,7 +60,9 @@ function EditPost({ item: post }) {
     setUpdatedType(event.target.value);
   };
 
-  return Object.keys(post).length !== 0 ? (
+  return !post.id ? (
+    <Redirect to="/" />
+  ) : (
     <Card>
       <Card.Body>
         <h2 className="text-center mb-4">Edit Post</h2>
@@ -107,8 +109,6 @@ function EditPost({ item: post }) {
         </form>
       </Card.Body>
     </Card>
-  ) : (
-    <Redirect to="/" />
   );
 }
 
