@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 
 import Posts from "../Posts/Posts";
-import ListGroup from "../../components/common/ListGroup";
+import CategorySection from "../../components/CategorySection/CategorySection";
 import PostTypes from "../../components/common/PostTypes";
 
 import "./Home.css";
@@ -13,9 +13,12 @@ function Home({ setPost }) {
 
   return (
     <>
-      <div className="row">
-        <div className="col-2">
-          <ListGroup items={types} setSelectedType={setSelectedType} />
+      <div className="row" style={{ maxWidth: "1550px" }}>
+        <div
+          className="col-2"
+          style={{ marginLeft: "20px", marginRight: "10px" }}
+        >
+          <CategorySection items={types} setSelectedType={setSelectedType} />
         </div>
         <div className="w-100" style={{ maxWidth: "1240px" }}>
           <Card>

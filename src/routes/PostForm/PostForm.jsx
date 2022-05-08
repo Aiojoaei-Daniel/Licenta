@@ -5,6 +5,7 @@ import { db } from "../../firebase-config";
 import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import InputGroupSelect from "./../../components/common/InputGroupSelect";
+import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
 
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
@@ -28,23 +29,7 @@ function PostForm() {
   const createPost = async (event) => {
     event.preventDefault();
 
-    const currentDate = new Date();
-
-    const date =
-      currentDate.getFullYear() +
-      "/" +
-      (currentDate.getMonth() + 1 <= 9 ? 0 : "") +
-      (currentDate.getMonth() + 1) +
-      "/" +
-      (currentDate.getDate() + 1 <= 9 ? 0 : "") +
-      currentDate.getDate();
-
-    const time =
-      (currentDate.getHours() <= 9 ? 0 : "") +
-      currentDate.getHours() +
-      ":" +
-      (currentDate.getMinutes() <= 9 ? 0 : "") +
-      currentDate.getMinutes();
+    const { date, time } = GetCurrentDateTime();
 
     try {
       if (newTitle.length > 2 && newMessage.length > 5 && type !== "") {

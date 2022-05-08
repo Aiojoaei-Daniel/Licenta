@@ -1,66 +1,18 @@
-import React, { useState } from "react";
-import { updateDoc, doc } from "firebase/firestore";
+import React from "react";
 import { Card, Alert } from "react-bootstrap";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-import { db } from "../../firebase-config";
 import InputGroupSelect from "../../components/common/InputGroupSelect";
+import EditPostLogic from "./EditPostLogic";
 
 function EditPost({ item: post }) {
-  const [updatedTitle, setUpdatedTitle] = useState(post.title);
-  const [updatedMessage, setUpdatedMessage] = useState(post.message);
-  const [updatedType, setUpdatedType] = useState(post.type);
-  const [error, setError] = useState("");
-  const history = useHistory();
-
-  const updatePost = async (event) => {
-    event.preventDefault();
-
-    const currentDate = new Date();
-
-    const date =
-      currentDate.getFullYear() +
-      "/" +
-      (currentDate.getMonth() + 1 <= 9 ? 0 : "") +
-      (currentDate.getMonth() + 1) +
-      "/" +
-      (currentDate.getDate() + 1 <= 9 ? 0 : "") +
-      currentDate.getDate();
-
-    const time =
-      (currentDate.getHours() <= 9 ? 0 : "") +
-      currentDate.getHours() +
-      ":" +
-      (currentDate.getMinutes() <= 9 ? 0 : "") +
-      currentDate.getMinutes();
-
-    const postDoc = doc(db, "posts", post.id);
-    const updatedPost = {
-      title: updatedTitle,
-      message: updatedMessage,
-      type: updatedType,
-      time: time,
-      date: date,
-    };
-
-    try {
-      if (updatedTitle.length > 2 && updatedMessage.length > 5) {
-        setError("");
-
-        await updateDoc(postDoc, updatedPost);
-
-        history.push("/");
-      } else {
-        setError("Incorrect title or message");
-      }
-    } catch (error) {
-      setError("Failed to update");
-    }
-  };
-
-  const handlePostType = (event) => {
-    setUpdatedType(event.target.value);
-  };
+  const {
+    setUpdatedMessage,
+    setUpdatedTitle,
+    handlePostType,
+    updatePost,
+    error,
+  } = EditPostLogic(post);
 
   return !post.id ? (
     <Redirect to="/" />

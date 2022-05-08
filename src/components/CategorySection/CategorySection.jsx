@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import _ from "lodash";
-import { Form, Button, Card, Dropdown, DropdownButton } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
-import PostTypes from "./PostTypes";
+import PostTypes from "../common/PostTypes";
 
-const ListGroup = ({ setSelectedType }) => {
+const CategorySection = ({ setSelectedType }) => {
   const { types: items } = PostTypes();
 
   const handleType = (value) => {
     setSelectedType(value);
   };
-
-  useEffect(() => {}, []);
 
   return (
     <Card>
@@ -29,7 +27,6 @@ const ListGroup = ({ setSelectedType }) => {
               id="dropdownMenuLink"
               data-bs-toggle={item[1] ? "dropdown" : ""}
               aria-expanded="true"
-              // value={item[0]}
               onClick={!item[1] ? () => handleType(item[0]) : null}
             >
               {item[0]}
@@ -63,9 +60,9 @@ const ListGroup = ({ setSelectedType }) => {
   );
 };
 
-ListGroup.defaultProps = {
+CategorySection.defaultProps = {
   textProperty: "name",
   valueProperty: "_id",
 };
 
-export default ListGroup;
+export default CategorySection;

@@ -1,58 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import React from "react";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 
-import { useAuth } from "../../contexts/AuthContext";
 import Pagination from "./../../components/Pagination/Pagination";
 
-import { db } from "../../firebase-config";
-
-import { paginate } from "./../../components/Pagination/Paginate";
+import PostsLogic from "./PostsLogic";
 
 function Posts({ setPost, selectedType }) {
-  const postsCollectionRef = collection(db, "posts");
-  const { currentUser } = useAuth();
-
-  const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const filteredPosts = posts.filter(
-    (post) => post.type == selectedType || selectedType === "All"
-  );
-
-  const sorted = _.orderBy(filteredPosts, ["date", "time"], ["desc", "desc"]);
-  console.log(sorted, filteredPosts);
-
-  const pageSize = 5;
-  const postsCount = filteredPosts.length;
-
-  const pagedPosts = paginate(sorted, currentPage, pageSize);
-
-  useEffect(() => {
-    const getPosts = async () => {
-      const posts = await getDocs(postsCollectionRef);
-
-      setPosts(posts.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getPosts();
-  }, []);
-
-  const deletePost = async (id) => {
-    const postDoc = doc(db, "posts", id);
-    await deleteDoc(postDoc);
-
-    const posts = await getDocs(postsCollectionRef);
-    setPosts(posts.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
-
-  const handlePostClick = (post) => {
-    setPost(post);
-  };
-
-  const onPageChange = (page) => {
-    setCurrentPage(page);
-  };
+  const {
+    onPageChange,
+    handlePostClick,
+    deletePost,
+    postsCount,
+    pagedPosts,
+    pageSize,
+    currentPage,
+    currentUser,
+  } = PostsLogic(setPost, selectedType);
 
   return (
     <>
