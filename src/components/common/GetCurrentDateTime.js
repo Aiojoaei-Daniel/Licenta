@@ -17,6 +17,16 @@ function GetCurrentDateTime(props) {
     (currentDate.getMinutes() <= 9 ? 0 : "") +
     currentDate.getMinutes();
 
+  console.log(
+    "ziua si luna",
+    currentDate.getDate(),
+    currentDate.getMonth() + 1,
+    "          ",
+    "ora si minutu",
+    currentDate.getHours(),
+    currentDate.getMinutes()
+  );
+
   return { date, time };
 }
 
