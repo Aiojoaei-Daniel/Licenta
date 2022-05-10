@@ -5,7 +5,7 @@ function Post({ post }) {
   return !post.id ? (
     <h1>No posts selected</h1>
   ) : (
-    <Card>
+    <Card style={{ marginLeft: "20px", marginRight: "20px" }}>
       <Card.Body>
         <>
           <div

@@ -6,7 +6,7 @@ import Pagination from "./../../components/Pagination/Pagination";
 
 import PostsLogic from "./PostsLogic";
 
-function Posts({ setPost, selectedType }) {
+function Posts({ setPost, selectedType, searchValue }) {
   const {
     onPageChange,
     handlePostClick,
@@ -16,7 +16,7 @@ function Posts({ setPost, selectedType }) {
     pageSize,
     currentPage,
     currentUser,
-  } = PostsLogic(setPost, selectedType);
+  } = PostsLogic(setPost, selectedType, searchValue);
 
   return (
     <>

@@ -17,12 +17,14 @@ import "./App.css";
 
 function App() {
   const [post, setPost] = useState({});
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <>
       <BrowserRouter>
         <Switch>
           <AuthProvider>
-            <Navbar />
+            <Navbar setSearchValue={setSearchValue} />
             <Route path="/login" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route
@@ -35,7 +37,9 @@ function App() {
             <Route
               exact
               path="/"
-              render={(props) => <Home {...props} setPost={setPost} />}
+              render={(props) => (
+                <Home {...props} searchValue={searchValue} setPost={setPost} />
+              )}
             />
             {/* <Redirect to="/not-found" /> */}
           </AuthProvider>

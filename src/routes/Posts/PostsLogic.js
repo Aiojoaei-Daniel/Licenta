@@ -8,23 +8,12 @@ import { db } from "../../firebase-config";
 
 import { paginate } from "./../../components/Pagination/Paginate";
 
-function PostsLogic(setPost, selectedType) {
+function PostsLogic(setPost, selectedType, searchValue) {
   const postsCollectionRef = collection(db, "posts");
   const { currentUser } = useAuth();
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
-  const filteredPosts = posts.filter(
-    (post) => post.type == selectedType || selectedType === "All"
-  );
-
-  const sorted = _.orderBy(filteredPosts, ["date", "time"], ["desc", "desc"]);
-
-  const pageSize = 5;
-  const postsCount = filteredPosts.length;
-
-  const pagedPosts = paginate(sorted, currentPage, pageSize);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -35,10 +24,40 @@ function PostsLogic(setPost, selectedType) {
     getPosts();
   }, []);
 
+  const getPagedPosts = () => {
+    let filteredPosts = [];
+    const pageSize = 5;
+
+    if (searchValue !== "") {
+      filteredPosts = posts.filter((post) =>
+        post.title.toLowerCase().startsWith(searchValue.toLowerCase())
+      );
+    } else {
+      filteredPosts = posts.filter(
+        (post) => post.type == selectedType || selectedType === "All"
+      );
+    }
+
+    const postsCount = filteredPosts.length;
+    const sorted = _.orderBy(filteredPosts, ["date", "time"], ["desc", "desc"]);
+    let pagedPosts = paginate(sorted, currentPage, pageSize);
+
+    // if i delete the last post on a page it should redirect me to the previous page
+
+    if (pagedPosts.length === 0) {
+      pagedPosts = paginate(sorted, currentPage - 1, pageSize);
+    }
+
+    return { pagedPosts, postsCount, pageSize };
+  };
+
+  const { pagedPosts, postsCount, pageSize } = getPagedPosts();
+
   const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
 
+    // refresh posts
     const posts = await getDocs(postsCollectionRef);
     setPosts(posts.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };

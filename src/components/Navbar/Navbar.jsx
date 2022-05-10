@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "./../../contexts/AuthContext";
 import LogoutLogic from "./../../routes/Login/LogoutLogic";
 
-function Navbar() {
+function Navbar({ setSearchValue }) {
   const { currentUser } = useAuth();
   const { handleLogout } = LogoutLogic();
   return (
@@ -63,13 +63,8 @@ function Navbar() {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onChange={(event) => setSearchValue(event.target.value)}
             />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
           </form>
         </div>
       </nav>

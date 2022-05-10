@@ -7,7 +7,7 @@ import PostTypes from "../../components/common/PostTypes";
 
 import "./Home.css";
 
-function Home({ setPost }) {
+function Home({ setPost, searchValue }) {
   const [selectedType, setSelectedType] = useState("All");
   const { types } = PostTypes();
 
@@ -23,7 +23,11 @@ function Home({ setPost }) {
         <div className="w-100" style={{ maxWidth: "1240px" }}>
           <Card>
             <Card.Body>
-              <Posts setPost={setPost} selectedType={selectedType} />
+              <Posts
+                setPost={setPost}
+                selectedType={selectedType}
+                searchValue={searchValue}
+              />
             </Card.Body>
           </Card>
         </div>
