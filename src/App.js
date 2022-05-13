@@ -11,6 +11,7 @@ import SignUp from "./routes/Register/Register";
 import Home from "./routes/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import EditPost from "./routes/EditPost/EditPost";
+import EmailRegister from "./routes/EmailRegister/EmailRegister";
 // import NotFound from "./components/common/NotFound";
 
 import "./App.css";
@@ -27,6 +28,7 @@ function App() {
             <Navbar setSearchValue={setSearchValue} />
             <Route path="/login" component={Login} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/email-register" component={EmailRegister} />
             <Route
               path="/post"
               render={(props) => <Post {...props} post={post} />}

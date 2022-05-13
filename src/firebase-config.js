@@ -2,6 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { getFirestore } from "@firebase/firestore";
+// import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,6 +13,8 @@ const app = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
+
+// export const messaging = getMessaging(firebaseApp);
 
 export const db = getFirestore(app);
 export const auth = app.auth();

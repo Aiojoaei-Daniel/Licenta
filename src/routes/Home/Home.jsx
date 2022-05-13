@@ -21,7 +21,7 @@ function Home({ setPost, searchValue }) {
           <CategorySection items={types} setSelectedType={setSelectedType} />
         </div>
         <div className="w-100" style={{ maxWidth: "1240px" }}>
-          <Card>
+          <Card style={{ backgroundColor: "#F5F5F5" }}>
             <Card.Body>
               <Posts
                 setPost={setPost}

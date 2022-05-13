@@ -56,6 +56,17 @@ function Navbar({ setSearchValue }) {
                 </Link>
               )}
             </li>
+            <li className="nav-item">
+              {currentUser && (
+                <Link
+                  to="/email-register"
+                  className="btn"
+                  style={{ color: "white" }}
+                >
+                  Email
+                </Link>
+              )}
+            </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input

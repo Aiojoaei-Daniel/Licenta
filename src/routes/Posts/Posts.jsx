@@ -27,7 +27,7 @@ function Posts({ setPost, selectedType, searchValue }) {
           <div
             key={post.id}
             style={{
-              borderBottom: "3px solid #F0F8FF",
+              borderBottom: "3px solid white",
               display: "flex",
               justifyContent: "space-between",
             }}
