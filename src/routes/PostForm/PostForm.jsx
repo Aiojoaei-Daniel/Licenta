@@ -6,6 +6,9 @@ import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import InputGroupSelect from "./../../components/common/InputGroupSelect";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
+import PostTypes from "../../components/common/PostTypes";
+
+import sendNotification from "../../components/common/SendNotification";
 
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
@@ -16,6 +19,8 @@ function PostForm() {
   const [type, setType] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
+
+  const { postType } = PostTypes();
 
   useEffect(() => {
     const getPosts = async () => {
@@ -42,6 +47,14 @@ function PostForm() {
           date: date,
           time: time,
         });
+
+        if ("type === college") {
+          console.log("send it to all users");
+        } else if ("user type === type") {
+          console.log("only for users from a group or a specialization");
+        }
+
+        sendNotification(newTitle, type);
 
         history.push("/");
       } else {
@@ -87,7 +100,11 @@ function PostForm() {
               required
             ></textarea>
           </div>
-          <InputGroupSelect onChange={handlePostType} />
+          <InputGroupSelect
+            onChange={handlePostType}
+            values={postType}
+            label="Post Type"
+          />
           <button
             type="submit"
             onClick={createPost}

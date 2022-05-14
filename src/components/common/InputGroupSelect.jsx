@@ -1,14 +1,10 @@
 import React from "react";
 
-import PostTypes from "./PostTypes";
-
-function InputGroupSelect({ onChange, prevValue }) {
-  const { typesForInputGroupSelect } = PostTypes();
-
+function InputGroupSelect({ onChange, prevValue, values, label }) {
   return (
     <div className="form-group">
       <label htmlFor="inputGroupSelect01" style={{ marginLeft: "2px" }}>
-        Type
+        {label}
       </label>
       <select
         className="custom-select"
@@ -16,8 +12,8 @@ function InputGroupSelect({ onChange, prevValue }) {
         onChange={onChange}
       >
         <option>{prevValue || "Choose..."}</option>
-        {typesForInputGroupSelect.map((type) => (
-          <option key={type}>{type}</option>
+        {values.map((value) => (
+          <option key={value}>{value}</option>
         ))}
       </select>
     </div>

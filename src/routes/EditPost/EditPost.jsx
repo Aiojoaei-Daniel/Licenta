@@ -4,6 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import InputGroupSelect from "../../components/common/InputGroupSelect";
 import EditPostLogic from "./EditPostLogic";
+import PostTypes from "../../components/common/PostTypes";
 
 function EditPost({ item: post }) {
   const {
@@ -14,6 +15,7 @@ function EditPost({ item: post }) {
     error,
   } = EditPostLogic(post);
 
+  const { postType } = PostTypes();
   return !post.id ? (
     <Redirect to="/" />
   ) : (
@@ -49,7 +51,12 @@ function EditPost({ item: post }) {
               required
             ></textarea>
           </div>
-          <InputGroupSelect onChange={handlePostType} prevValue={post.type} />
+          <InputGroupSelect
+            onChange={handlePostType}
+            prevValue={post.type}
+            values={postType}
+            label="Post Type"
+          />
           <button
             type="submit"
             onClick={updatePost}

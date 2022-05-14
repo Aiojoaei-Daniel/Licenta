@@ -33,6 +33,13 @@ function Navbar({ setSearchValue }) {
               </Link>
             </li>
             <li className="nav-item">
+              {currentUser && (
+                <Link to="/new-post" className="btn" style={{ color: "white" }}>
+                  New Post
+                </Link>
+              )}
+            </li>
+            <li className="nav-item">
               {!currentUser && (
                 <Link to="/login" className="btn" style={{ color: "white" }}>
                   Login
@@ -44,26 +51,30 @@ function Navbar({ setSearchValue }) {
                 </button>
               )}
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/sign-up" className="btn" style={{ color: "white" }}>
                 Sign Up
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               {currentUser && (
-                <Link to="/new-post" className="btn" style={{ color: "white" }}>
-                  New Post
+                <Link
+                  to="/student-login"
+                  className="btn"
+                  style={{ color: "white" }}
+                >
+                  Student LogIn
                 </Link>
               )}
             </li>
             <li className="nav-item">
               {currentUser && (
                 <Link
-                  to="/email-register"
+                  to="/student-register"
                   className="btn"
                   style={{ color: "white" }}
                 >
-                  Email
+                  Student Register
                 </Link>
               )}
             </li>

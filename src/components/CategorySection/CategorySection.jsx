@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 import PostTypes from "../common/PostTypes";
 
 const CategorySection = ({ setSelectedType }) => {
-  const { types: items } = PostTypes();
+  const { categories } = PostTypes();
 
   const handleType = (value) => {
     setSelectedType(value);
@@ -15,7 +15,7 @@ const CategorySection = ({ setSelectedType }) => {
     // <Card style={{ backgroundColor: "#F5F5F5" }}>
     //   <Card.Body>
     <div>
-      {items.map((item) => (
+      {categories.map((item) => (
         <div className="dropdown" key={item[0]}>
           <a
             className={

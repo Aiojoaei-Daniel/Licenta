@@ -6,16 +6,21 @@ const PostTypes = (props) => {
   const year3 = _.range(5301, 5321);
   const year4 = _.range(5401, 5421);
   const years = [...year1, ...year2, ...year3, ...year4];
-  const types = [
+
+  const specializations = ["No specialization", "EA", "MON", "TST"];
+
+  // for category section
+  const categories = [
     ["All"],
     ["College"],
     ["Specializations", ["EA", "MON", "TST"]],
     ["Groups", years],
   ];
 
-  const typesForInputGroupSelect = ["College", "EA", "MON", "TST", ...years];
+  // for post form
+  const postType = ["College", "EA", "MON", "TST", ...years];
 
-  return { types, typesForInputGroupSelect };
+  return { categories, postType, specializations, years };
 };
 
 export default PostTypes;
