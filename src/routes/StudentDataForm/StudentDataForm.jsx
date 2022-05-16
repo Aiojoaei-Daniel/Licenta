@@ -1,35 +1,60 @@
 import React, { useState, useEffect } from "react";
 
-import { Card } from "react-bootstrap";
+import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import InputGroupSelect from "../../components/common/InputGroupSelect";
 import PostTypes from "../../components/common/PostTypes";
 
 import { db } from "../../firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
-function StudentDataForm(props) {
+import { useAuth } from "./../../contexts/AuthContext";
+
+function StudentDataForm() {
   const studentsCollectionRef = collection(db, "students");
   const { years: groups, specializations } = PostTypes();
+  const history = useHistory();
 
+  const [students, setStudents] = useState([]);
   const [studentEmail, setStudentEmail] = useState("");
   const [studentGroup, setStudentGroup] = useState();
   const [studentSpecialization, setStudentSpecialization] = useState("");
   const [error, setError] = useState();
-  const history = useHistory();
+  const { currentUser, studentData, setStudentData } = useAuth();
+
+  useEffect(() => {
+    const getStudents = async () => {
+      const students = await getDocs(studentsCollectionRef);
+
+      setStudents(students.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getStudents();
+    students.map((student) => console.log(student));
+  }, []);
 
   const registerStudent = async (event) => {
     event.preventDefault();
-    try {
+    let studentInDataBase = false;
+    students.map((student) => {
+      if (student.email === studentEmail) {
+        studentInDataBase = true;
+        setError("This email is already registered");
+      }
+    });
+    if (!currentUser && !studentInDataBase && !studentData) {
+      console.log("inregistreaza student");
       await addDoc(studentsCollectionRef, {
         email: studentEmail,
         group: studentGroup,
         specialization: studentSpecialization,
       });
+      setStudentData({
+        email: studentEmail,
+        group: studentGroup,
+        specialization: studentSpecialization,
+      });
       history.push("/");
-    } catch (error) {
-      setError("Register failed");
-    }
+    } else setError("Already connected");
   };
 
   return (
@@ -37,6 +62,7 @@ function StudentDataForm(props) {
       <Card style={{ maxWidth: "2000px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Student Data</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
           <form>
             <div className="form-group">
               <label htmlFor="title">Email</label>

@@ -10,6 +10,8 @@ import PostTypes from "../../components/common/PostTypes";
 
 import sendNotification from "../../components/common/SendNotification";
 
+import { useAuth } from "./../../contexts/AuthContext";
+
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
 
@@ -19,6 +21,8 @@ function PostForm() {
   const [type, setType] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
+
+  const { studentData } = useAuth();
 
   const { postType } = PostTypes();
 
@@ -35,9 +39,15 @@ function PostForm() {
     event.preventDefault();
 
     const { date, time } = GetCurrentDateTime();
+    console.log("data din post form", studentData);
 
     try {
-      if (newTitle.length > 2 && newMessage.length > 5 && type !== "") {
+      if (
+        newTitle.length > 2 &&
+        newMessage.length > 5 &&
+        type !== "" &&
+        type !== "Choose..."
+      ) {
         setError("");
 
         await addDoc(postsCollectionRef, {
@@ -47,21 +57,27 @@ function PostForm() {
           date: date,
           time: time,
         });
-
-        if ("type === college") {
-          console.log("send it to all users");
-        } else if ("user type === type") {
-          console.log("only for users from a group or a specialization");
+        console.log("inainte de if");
+        if (
+          Object.keys(studentData).length === 0 ||
+          (studentData.group !== type &&
+            studentData.specialization !== type &&
+            type !== "College")
+        ) {
+          // history.push("/");
+          console.log("in if");
+        } else {
+          console.log("in else");
+          sendNotification(newTitle, type);
+          history.push("/");
         }
-
-        sendNotification(newTitle, type);
-
+        console.log("dupa if");
         history.push("/");
       } else {
         setError("Wrong title, message or type.");
       }
     } catch (error) {
-      setError("Failed to post");
+      setError("Failed to post dick");
     }
   };
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import _ from "lodash";
 
-import { useAuth } from "../../contexts/AuthContext";
+// import { useAuth } from "../../contexts/AuthContext";
 
 import { db } from "../../firebase-config";
 
@@ -10,7 +10,7 @@ import { paginate } from "./../../components/Pagination/Paginate";
 
 function PostsLogic(setPost, selectedType, searchValue) {
   const postsCollectionRef = collection(db, "posts");
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -78,7 +78,7 @@ function PostsLogic(setPost, selectedType, searchValue) {
     pagedPosts,
     pageSize,
     currentPage,
-    currentUser,
+    // currentUser,
   };
 }
 

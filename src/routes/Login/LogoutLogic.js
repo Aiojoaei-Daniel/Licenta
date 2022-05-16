@@ -1,24 +1,27 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-const LogoutLogic = () => {
-  const [error, setError] = useState("");
+const LogoutLogic = (setStudentData) => {
+  // const [error, setError] = useState("");
   const history = useHistory();
   const { logout } = useAuth();
 
   async function handleLogout() {
-    setError("");
+    // setError("");
 
-    try {
-      await logout();
-      history.pushState("/login");
-    } catch (error) {
-      setError("Failed to logout");
-    }
+    // try {
+    await logout();
+    history.push("/");
+    // } catch (error) {
+    // setError("Failed to logout");
+    // }
   }
 
-  return { handleLogout };
+  const handleStudentLogout = () => {
+    setStudentData({});
+  };
+
+  return { handleLogout, handleStudentLogout };
 };
 
 export default LogoutLogic;

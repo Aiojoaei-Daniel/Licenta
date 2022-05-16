@@ -21,6 +21,8 @@ import StudentLogin from "./routes/StudentLogin/StudentLogin";
 function App() {
   const [post, setPost] = useState({});
   const [searchValue, setSearchValue] = useState("");
+  // const [studentData, setStudentData] = useState();
+  // console.log(studentData);
 
   return (
     <>
@@ -28,17 +30,43 @@ function App() {
         <Switch>
           <AuthProvider>
             <Page />
-            <Navbar setSearchValue={setSearchValue} />
+            <Navbar
+              setSearchValue={setSearchValue}
+              // setStudentData={setStudentData}
+              // studentData={studentData}
+            />
             <Route path="/login" component={Login} />
             {/* <Route path="/sign-up" component={SignUp} /> */}
             {/* <Route path="/test" component={TestNotification} /> */}
-            <Route path="/student-login" component={StudentLogin} />
-            <Route path="/student-register" component={StudentDataForm} />
+            <Route
+              path="/student-login"
+              render={(props) => (
+                <StudentLogin
+                  {...props}
+                  // setStudentData={setStudentData}
+                  // studentData={studentData}
+                />
+              )}
+            />
+            <Route
+              path="/student-register"
+              render={(props) => (
+                <StudentDataForm
+                  {...props}
+                  // setStudentData={setStudentData}
+                  // studentData={studentData}
+                />
+              )}
+            />
             <Route
               path="/post"
               render={(props) => <Post {...props} post={post} />}
             />
-            <PrivateRoute path="/new-post" component={PostForm} />
+            <PrivateRoute
+              path="/new-post"
+              component={PostForm}
+              // item={studentData}
+            />
             <PrivateRoute path="/edit-post" component={EditPost} item={post} />
             {/* <Route path="/not-found" component={NotFound} /> */}
             <Route

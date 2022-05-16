@@ -7,9 +7,12 @@ import PostTypes from "../../components/common/PostTypes";
 
 import "./Home.css";
 
+import { useAuth } from "../../contexts/AuthContext";
+
 function Home({ setPost, searchValue }) {
   const [selectedType, setSelectedType] = useState("All");
   const { types } = PostTypes();
+  const { currentUser } = useAuth();
 
   return (
     <>
@@ -27,6 +30,7 @@ function Home({ setPost, searchValue }) {
                 setPost={setPost}
                 selectedType={selectedType}
                 searchValue={searchValue}
+                currentUser={currentUser}
               />
             </Card.Body>
           </Card>
