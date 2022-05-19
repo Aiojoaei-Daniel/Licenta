@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 function Post({ post }) {
   return !post.id ? (
-    <h1>No posts selected</h1>
+    <h1>No post selected</h1>
   ) : (
     <Card style={{ marginLeft: "20px", marginRight: "20px" }}>
       <Card.Body>

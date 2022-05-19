@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory, Redirect } from "react-router-dom";
 
@@ -16,8 +15,12 @@ function StudentLogin() {
   const [studentEmail, setStudentEmail] = useState("");
   const [error, setError] = useState();
   const history = useHistory();
-  const { currentUser, setCurrentStudent, studentData, setStudentData } =
-    useAuth();
+  const {
+    currentUser,
+    currentStudent,
+    setCurrentStudent,
+    setStudentInLocalStorage,
+  } = useAuth();
 
   useEffect(() => {
     const getStudents = async () => {
@@ -32,12 +35,12 @@ function StudentLogin() {
   const handleLogin = (event) => {
     event.preventDefault();
 
-    Object.keys(studentData).length === 0
+    Object.keys(currentStudent).length === 0
       ? students.map((student) => {
           if (student.email === studentEmail) {
             setError("");
-            setStudentData(student);
             setCurrentStudent(student);
+            setStudentInLocalStorage(student);
             history.push("/");
           } else {
             setError("Fail to connect");
@@ -46,7 +49,7 @@ function StudentLogin() {
       : setError("Already connected");
   };
 
-  return Object.keys(studentData).length === 0 ? (
+  return Object.keys(currentStudent).length === 0 ? (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card style={{ maxWidth: "2000px" }}>
         <Card.Body>

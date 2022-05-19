@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { collection, getDocs, addDoc } from "firebase/firestore";
+
+import emailjs from "emailjs-com";
 
 import { db } from "../../firebase-config";
 import { Card, Alert } from "react-bootstrap";
@@ -22,9 +24,9 @@ function PostForm() {
   const [error, setError] = useState("");
   const history = useHistory();
 
-  const { studentData } = useAuth();
-
+  const { currentStudent } = useAuth();
   const { postType } = PostTypes();
+  const form = useRef();
 
   useEffect(() => {
     const getPosts = async () => {
@@ -39,8 +41,8 @@ function PostForm() {
     event.preventDefault();
 
     const { date, time } = GetCurrentDateTime();
-    console.log("data din post form", studentData);
-
+    console.log("data din post form", currentStudent);
+    console.log("event:", event.target);
     try {
       if (
         newTitle.length > 2 &&
@@ -57,27 +59,28 @@ function PostForm() {
           date: date,
           time: time,
         });
-        console.log("inainte de if");
+        emailjs.sendForm(
+          "service_g3elv0p",
+          "template_xkwc30w",
+          form.current,
+          "wGFIRDXI0dcdI2h6X"
+        );
+        console.log(form.current);
         if (
-          Object.keys(studentData).length === 0 ||
-          (studentData.group !== type &&
-            studentData.specialization !== type &&
+          Object.keys(currentStudent).length === 0 ||
+          (currentStudent.group !== type &&
+            currentStudent.specialization !== type &&
             type !== "College")
         ) {
-          // history.push("/");
-          console.log("in if");
         } else {
-          console.log("in else");
           sendNotification(newTitle, type);
-          history.push("/");
         }
-        console.log("dupa if");
         history.push("/");
       } else {
         setError("Wrong title, message or type.");
       }
     } catch (error) {
-      setError("Failed to post dick");
+      setError("Failed to post");
     }
   };
 
@@ -90,10 +93,11 @@ function PostForm() {
       <Card.Body>
         <h2 className="text-center mb-4">Create a new post</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <form>
+        <form ref={form}>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
+              name="title"
               type="text"
               className="form-control"
               id="title"
@@ -120,6 +124,7 @@ function PostForm() {
             onChange={handlePostType}
             values={postType}
             label="Post Type"
+            name="type"
           />
           <button
             type="submit"

@@ -8,9 +8,9 @@ export function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const [studentData, setStudentData] = useState({});
+  const [currentStudent, setCurrentStudent] = useState({});
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -24,8 +24,16 @@ function AuthProvider({ children }) {
     return auth.signOut();
   }
 
-  function setCurrentStudent(currentStudent) {
-    setStudentData(currentStudent);
+  function setStudentInLocalStorage(student) {
+    console.log("In setLocal Storage", student, currentStudent);
+    localStorage.setItem("email", JSON.stringify(student.email));
+    localStorage.setItem("group", JSON.stringify(student.group));
+    localStorage.setItem(
+      "specialization",
+      JSON.stringify(student.specialization)
+    );
+    localStorage.setItem("id", JSON.stringify(student.id));
+    console.log("Email", localStorage.getItem("email"));
   }
 
   useEffect(() => {
@@ -33,6 +41,14 @@ function AuthProvider({ children }) {
       setCurrentUser(user);
       setLoading(false);
     });
+
+    const student = {
+      email: JSON.parse(localStorage.getItem("email")),
+      group: JSON.parse(localStorage.getItem("group")),
+      specialization: JSON.parse(localStorage.getItem("specialization")),
+    };
+    setCurrentStudent(student);
+
     return unsubscribe;
   }, []);
 
@@ -41,9 +57,9 @@ function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    currentStudent,
     setCurrentStudent,
-    studentData,
-    setStudentData,
+    setStudentInLocalStorage,
   };
 
   return (

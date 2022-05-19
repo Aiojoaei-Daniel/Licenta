@@ -38,7 +38,17 @@ function Posts({ setPost, selectedType, searchValue, currentUser }) {
                   handlePostClick(post);
                 }}
               >
-                <h1 style={{ color: "black" }}>{post.title}</h1>
+                <h1
+                  style={{
+                    color: "black",
+                    whiteSpace: "nowrap",
+                    width: "400px",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {post.title}
+                </h1>
               </Link>
               <a
                 style={{

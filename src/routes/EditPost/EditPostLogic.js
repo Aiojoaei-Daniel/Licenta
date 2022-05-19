@@ -3,7 +3,9 @@ import { updateDoc, doc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
 import { db } from "../../firebase-config";
+import { useAuth } from "./../../contexts/AuthContext";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
+import sendNotification from "../../components/common/SendNotification";
 
 function EditPostLogic(post) {
   const [updatedTitle, setUpdatedTitle] = useState(post.title);
@@ -11,6 +13,7 @@ function EditPostLogic(post) {
   const [updatedType, setUpdatedType] = useState(post.type);
   const [error, setError] = useState("");
   const history = useHistory();
+  const { currentStudent } = useAuth();
 
   const updatePost = async (event) => {
     event.preventDefault();
@@ -32,6 +35,16 @@ function EditPostLogic(post) {
         setError("");
 
         await updateDoc(postDoc, updatedPost);
+
+        if (
+          Object.keys(currentStudent).length === 0 ||
+          (currentStudent.group !== updatedType &&
+            currentStudent.specialization !== updatedType &&
+            updatedType !== "College")
+        ) {
+        } else {
+          sendNotification("UPDATED \n" + updatedTitle, updatedType);
+        }
 
         history.push("/");
       } else {

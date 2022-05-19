@@ -5,9 +5,9 @@ import { useAuth } from "./../../contexts/AuthContext";
 import LogoutLogic from "./../../routes/Login/LogoutLogic";
 
 function Navbar({ setSearchValue }) {
-  const { currentUser, studentData, setStudentData } = useAuth();
-  const { handleLogout, handleStudentLogout } = LogoutLogic(setStudentData);
-  console.log("Navbar", studentData);
+  const { currentUser, currentStudent, setCurrentStudent } = useAuth();
+  const { handleLogout, handleStudentLogout } = LogoutLogic(setCurrentStudent);
+  console.log("Navbar", currentStudent);
   return (
     <>
       <nav
@@ -58,7 +58,7 @@ function Navbar({ setSearchValue }) {
               </Link>
             </li> */}
             <li className="nav-item">
-              {Object.keys(studentData).length === 0 && (
+              {Object.keys(currentStudent).length === 0 && (
                 <Link
                   to="/student-login"
                   className="btn"
@@ -69,7 +69,7 @@ function Navbar({ setSearchValue }) {
               )}
             </li>
             <li>
-              {Object.keys(studentData).length !== 0 && (
+              {Object.keys(currentStudent).length !== 0 && (
                 <button onClick={handleStudentLogout} className="btn btn-dark">
                   Student Logout
                 </button>

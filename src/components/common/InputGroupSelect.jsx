@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputGroupSelect({ onChange, prevValue, values, label }) {
+function InputGroupSelect({ onChange, prevValue, values, label, name }) {
   return (
     <div className="form-group">
       <label htmlFor="inputGroupSelect01" style={{ marginLeft: "2px" }}>
@@ -10,6 +10,7 @@ function InputGroupSelect({ onChange, prevValue, values, label }) {
         className="custom-select"
         id="inputGroupSelect01"
         onChange={onChange}
+        name={name}
       >
         <option>{prevValue || "Choose..."}</option>
         {values.map((value) => (

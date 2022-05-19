@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Card, Alert } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import InputGroupSelect from "../../components/common/InputGroupSelect";
 import PostTypes from "../../components/common/PostTypes";
 
@@ -20,7 +20,12 @@ function StudentDataForm() {
   const [studentGroup, setStudentGroup] = useState();
   const [studentSpecialization, setStudentSpecialization] = useState("");
   const [error, setError] = useState();
-  const { currentUser, studentData, setStudentData } = useAuth();
+  const {
+    currentUser,
+    currentStudent,
+    setCurrentStudent,
+    setStudentInLocalStorage,
+  } = useAuth();
 
   useEffect(() => {
     const getStudents = async () => {
@@ -35,29 +40,32 @@ function StudentDataForm() {
   const registerStudent = async (event) => {
     event.preventDefault();
     let studentInDataBase = false;
+    const studentData = {
+      email: studentEmail,
+      group: studentGroup,
+      specialization: studentSpecialization,
+    };
     students.map((student) => {
       if (student.email === studentEmail) {
         studentInDataBase = true;
         setError("This email is already registered");
       }
     });
-    if (!currentUser && !studentInDataBase && !studentData) {
-      console.log("inregistreaza student");
-      await addDoc(studentsCollectionRef, {
-        email: studentEmail,
-        group: studentGroup,
-        specialization: studentSpecialization,
-      });
-      setStudentData({
-        email: studentEmail,
-        group: studentGroup,
-        specialization: studentSpecialization,
-      });
+    if (
+      // !currentUser &&
+      !studentInDataBase &&
+      Object.keys(currentStudent).length === 0
+    ) {
+      await addDoc(studentsCollectionRef, studentData);
+      setCurrentStudent(studentData);
+      setStudentInLocalStorage(studentData);
       history.push("/");
-    } else setError("Already connected");
+    } else if (!studentInDataBase) setError("Already connected");
   };
 
-  return (
+  return Object.keys(currentStudent).length !== 0 ? (
+    <Redirect to="/" />
+  ) : (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Card style={{ maxWidth: "2000px" }}>
         <Card.Body>
