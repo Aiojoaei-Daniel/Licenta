@@ -59,12 +59,6 @@ function PostForm() {
           date: date,
           time: time,
         });
-        emailjs.sendForm(
-          "service_g3elv0p",
-          "template_xkwc30w",
-          form.current,
-          "wGFIRDXI0dcdI2h6X"
-        );
         console.log(form.current);
         if (
           Object.keys(currentStudent).length === 0 ||
@@ -74,6 +68,12 @@ function PostForm() {
         ) {
         } else {
           sendNotification(newTitle, type);
+          emailjs.send(
+            "service_g3elv0p",
+            "template_xkwc30w",
+            { title: newTitle, type: type, email: currentStudent.email },
+            "wGFIRDXI0dcdI2h6X"
+          );
         }
         history.push("/");
       } else {
@@ -93,7 +93,7 @@ function PostForm() {
       <Card.Body>
         <h2 className="text-center mb-4">Create a new post</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <form ref={form}>
+        <form ref={form} defaultValue={emaill}>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input

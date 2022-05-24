@@ -13,6 +13,7 @@ function EditPost({ item: post }) {
     handlePostType,
     updatePost,
     error,
+    form,
   } = EditPostLogic(post);
 
   const { postType } = PostTypes();
@@ -23,7 +24,7 @@ function EditPost({ item: post }) {
       <Card.Body>
         <h2 className="text-center mb-4">Edit Post</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <form>
+        <form ref={form}>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
@@ -35,6 +36,7 @@ function EditPost({ item: post }) {
               onChange={(event) => {
                 setUpdatedTitle(event.target.value);
               }}
+              name="title"
               required
             />
           </div>
@@ -56,6 +58,7 @@ function EditPost({ item: post }) {
             prevValue={post.type}
             values={postType}
             label="Post Type"
+            name="type"
           />
           <button
             type="submit"

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { updateDoc, doc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import { db } from "../../firebase-config";
 import { useAuth } from "./../../contexts/AuthContext";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
 import sendNotification from "../../components/common/SendNotification";
+import emailjs from "emailjs-com";
 
 function EditPostLogic(post) {
   const [updatedTitle, setUpdatedTitle] = useState(post.title);
@@ -15,6 +16,7 @@ function EditPostLogic(post) {
   const history = useHistory();
   const { currentStudent } = useAuth();
 
+  const form = useRef();
   const updatePost = async (event) => {
     event.preventDefault();
 
@@ -44,6 +46,12 @@ function EditPostLogic(post) {
         ) {
         } else {
           sendNotification("UPDATED \n" + updatedTitle, updatedType);
+          emailjs.sendForm(
+            "service_g3elv0p",
+            "template_xkwc30w",
+            form.current,
+            "wGFIRDXI0dcdI2h6X"
+          );
         }
 
         history.push("/");
@@ -65,6 +73,7 @@ function EditPostLogic(post) {
     error,
     setUpdatedMessage,
     setUpdatedTitle,
+    form,
   };
 }
 
