@@ -33,7 +33,7 @@ function Posts({ setPost, selectedType, searchValue, currentUser }) {
           >
             <ul>
               <Link
-                to="/post"
+                to={`/post/${post.id}`}
                 onClick={() => {
                   handlePostClick(post);
                 }}
@@ -87,7 +87,7 @@ function Posts({ setPost, selectedType, searchValue, currentUser }) {
             {currentUser && (
               <div style={{ marginTop: "10px" }}>
                 <Link
-                  to="/edit-post"
+                  to={`/edit-post/${post.id}`}
                   className="btn btn-primary"
                   onClick={() => {
                     handlePostClick(post);

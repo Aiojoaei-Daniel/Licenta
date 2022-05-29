@@ -3,13 +3,12 @@ import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import _ from "lodash";
 
 import { db } from "../../firebase-config";
-
 import { paginate } from "./../../components/Pagination/Paginate";
+import { usePosts } from "./../../contexts/PostsContext";
 
 function PostsLogic(setPost, selectedType, searchValue) {
   const postsCollectionRef = collection(db, "posts");
-
-  const [posts, setPosts] = useState([]);
+  const { posts, setPosts } = usePosts();
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -75,7 +74,6 @@ function PostsLogic(setPost, selectedType, searchValue) {
     pagedPosts,
     pageSize,
     currentPage,
-    // currentUser,
   };
 }
 

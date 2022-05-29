@@ -1,22 +1,19 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { updateDoc, doc } from "firebase/firestore";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { db } from "../../firebase-config";
-import { useAuth } from "./../../contexts/AuthContext";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
-import sendNotification from "../../components/common/SendNotification";
-import emailjs from "emailjs-com";
 
 function EditPostLogic(post) {
   const [updatedTitle, setUpdatedTitle] = useState(post.title);
   const [updatedMessage, setUpdatedMessage] = useState(post.message);
   const [updatedType, setUpdatedType] = useState(post.type);
   const [error, setError] = useState("");
-  const history = useHistory();
-  const { currentStudent } = useAuth();
 
+  const history = useHistory();
   const form = useRef();
+
   const updatePost = async (event) => {
     event.preventDefault();
 
@@ -38,21 +35,21 @@ function EditPostLogic(post) {
 
         await updateDoc(postDoc, updatedPost);
 
-        if (
-          Object.keys(currentStudent).length === 0 ||
-          (currentStudent.group !== updatedType &&
-            currentStudent.specialization !== updatedType &&
-            updatedType !== "College")
-        ) {
-        } else {
-          sendNotification("UPDATED \n" + updatedTitle, updatedType);
-          emailjs.sendForm(
-            "service_g3elv0p",
-            "template_xkwc30w",
-            form.current,
-            "wGFIRDXI0dcdI2h6X"
-          );
-        }
+        // if (
+        //   Object.keys(currentStudent).length === 0 ||
+        //   (currentStudent.group !== updatedType &&
+        //     currentStudent.specialization !== updatedType &&
+        //     updatedType !== "College")
+        // ) {
+        // } else {
+        //   sendNotification("UPDATED \n" + updatedTitle, updatedType);
+        //   emailjs.sendForm(
+        //     "service_g3elv0p",
+        //     "template_xkwc30w",
+        //     form.current,
+        //     "wGFIRDXI0dcdI2h6X"
+        //   );
+        // }
 
         history.push("/");
       } else {
@@ -74,6 +71,7 @@ function EditPostLogic(post) {
     setUpdatedMessage,
     setUpdatedTitle,
     form,
+    post,
   };
 }
 

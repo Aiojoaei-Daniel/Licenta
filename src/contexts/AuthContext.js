@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+import { auth, db } from "../firebase-config";
 
 const AuthContext = React.createContext();
 
@@ -11,6 +12,8 @@ function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [currentStudent, setCurrentStudent] = useState({});
+  const [students, setStudents] = useState([]);
+  const studentsCollectionRef = collection(db, "students");
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -25,7 +28,6 @@ function AuthProvider({ children }) {
   }
 
   function setStudentInLocalStorage(student) {
-    console.log("In setLocal Storage", student, currentStudent);
     localStorage.setItem("email", JSON.stringify(student.email));
     localStorage.setItem("group", JSON.stringify(student.group));
     localStorage.setItem(
@@ -33,7 +35,6 @@ function AuthProvider({ children }) {
       JSON.stringify(student.specialization)
     );
     localStorage.setItem("id", JSON.stringify(student.id));
-    console.log("Email", localStorage.getItem("email"));
   }
 
   useEffect(() => {
@@ -47,16 +48,24 @@ function AuthProvider({ children }) {
       group: JSON.parse(localStorage.getItem("group")),
       specialization: JSON.parse(localStorage.getItem("specialization")),
     };
-    setCurrentStudent(student);
+    setCurrentStudent(student.email !== null ? student : {});
+
+    const getStudents = async () => {
+      const students = await getDocs(studentsCollectionRef);
+
+      setStudents(students.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getStudents();
 
     return unsubscribe;
   }, []);
 
   const value = {
-    currentUser,
     signup,
     login,
     logout,
+    students,
+    currentUser,
     currentStudent,
     setCurrentStudent,
     setStudentInLocalStorage,

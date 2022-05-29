@@ -5,7 +5,6 @@ import { Container } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 
 const SignUp = () => {
-  // const { handleChange } = LoginLogic();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();

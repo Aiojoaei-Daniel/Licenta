@@ -1,9 +1,17 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
-function Post({ post }) {
-  return !post.id ? (
-    <h1>No post selected</h1>
+import { usePosts } from "../../contexts/PostsContext";
+
+function Post() {
+  const { posts } = usePosts();
+  const { id } = useParams();
+  const post = posts.find((post) => post.id === id);
+  console.log(posts);
+
+  return !post ? (
+    <></>
   ) : (
     <Card style={{ marginLeft: "20px", marginRight: "20px" }}>
       <Card.Body>

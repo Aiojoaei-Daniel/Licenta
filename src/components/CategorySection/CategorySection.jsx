@@ -1,6 +1,5 @@
 import React from "react";
 import _ from "lodash";
-import { Card } from "react-bootstrap";
 
 import PostTypes from "../common/PostTypes";
 
@@ -12,8 +11,6 @@ const CategorySection = ({ setSelectedType }) => {
   };
 
   return (
-    // <Card style={{ backgroundColor: "#F5F5F5" }}>
-    //   <Card.Body>
     <div>
       {categories.map((item) => (
         <div className="dropdown" key={item[0]}>
@@ -57,8 +54,6 @@ const CategorySection = ({ setSelectedType }) => {
         </div>
       ))}
     </div>
-    //   </Card.Body>
-    // </Card>
   );
 };
 

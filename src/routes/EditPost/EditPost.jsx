@@ -1,12 +1,17 @@
 import React from "react";
 import { Card, Alert } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import InputGroupSelect from "../../components/common/InputGroupSelect";
 import EditPostLogic from "./EditPostLogic";
 import PostTypes from "../../components/common/PostTypes";
 
-function EditPost({ item: post }) {
+import { usePosts } from "./../../contexts/PostsContext";
+
+function EditPost() {
+  const { posts } = usePosts();
+  const { id } = useParams();
+  const post = posts.find((post) => post.id === id);
   const {
     setUpdatedMessage,
     setUpdatedTitle,
@@ -14,11 +19,11 @@ function EditPost({ item: post }) {
     updatePost,
     error,
     form,
-  } = EditPostLogic(post);
+  } = EditPostLogic(post ? post : {});
 
   const { postType } = PostTypes();
-  return !post.id ? (
-    <Redirect to="/" />
+  return !post ? (
+    <></>
   ) : (
     <Card>
       <Card.Body>

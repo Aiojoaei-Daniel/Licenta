@@ -21,9 +21,9 @@ function PostsProvider({ children }) {
       setPosts(posts.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
-  }, []);
+  }, [children]);
 
-  const value = { posts };
+  const value = { posts, setPosts };
   return (
     <PostsContext.Provider value={value}>{children}</PostsContext.Provider>
   );

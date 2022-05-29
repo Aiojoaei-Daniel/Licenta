@@ -4,10 +4,9 @@ import { Card } from "react-bootstrap";
 import Posts from "../Posts/Posts";
 import CategorySection from "../../components/CategorySection/CategorySection";
 import PostTypes from "../../components/common/PostTypes";
+import { useAuth } from "../../contexts/AuthContext";
 
 import "./Home.css";
-
-import { useAuth } from "../../contexts/AuthContext";
 
 function Home({ setPost, searchValue }) {
   const [selectedType, setSelectedType] = useState("All");

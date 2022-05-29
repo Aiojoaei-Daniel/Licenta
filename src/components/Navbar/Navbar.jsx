@@ -7,7 +7,7 @@ import LogoutLogic from "./../../routes/Login/LogoutLogic";
 function Navbar({ setSearchValue }) {
   const { currentUser, currentStudent, setCurrentStudent } = useAuth();
   const { handleLogout, handleStudentLogout } = LogoutLogic(setCurrentStudent);
-  console.log("Navbar", currentStudent);
+  // console.log("Navbar", currentStudent);
   return (
     <>
       <nav

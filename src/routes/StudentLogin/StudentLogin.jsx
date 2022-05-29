@@ -15,12 +15,8 @@ function StudentLogin() {
   const [studentEmail, setStudentEmail] = useState("");
   const [error, setError] = useState();
   const history = useHistory();
-  const {
-    currentUser,
-    currentStudent,
-    setCurrentStudent,
-    setStudentInLocalStorage,
-  } = useAuth();
+  const { currentStudent, setCurrentStudent, setStudentInLocalStorage } =
+    useAuth();
 
   useEffect(() => {
     const getStudents = async () => {
@@ -29,7 +25,6 @@ function StudentLogin() {
       setStudents(students.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getStudents();
-    // students.map((student) => console.log(student));
   }, []);
 
   const handleLogin = (event) => {

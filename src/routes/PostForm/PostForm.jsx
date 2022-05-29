@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-
-import emailjs from "emailjs-com";
+import React, { useState, useRef } from "react";
+import { collection, addDoc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
 import { Card, Alert } from "react-bootstrap";
@@ -9,40 +7,27 @@ import { Link, useHistory } from "react-router-dom";
 import InputGroupSelect from "./../../components/common/InputGroupSelect";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
 import PostTypes from "../../components/common/PostTypes";
-
-import sendNotification from "../../components/common/SendNotification";
-
 import { useAuth } from "./../../contexts/AuthContext";
+import sendNotification from "../../components/common/SendNotification";
 
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
 
-  const [posts, setPosts] = useState([]);
   const [newTitle, setNewTitle] = useState();
   const [newMessage, setNewMessage] = useState();
   const [type, setType] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
 
-  const { currentStudent } = useAuth();
   const { postType } = PostTypes();
   const form = useRef();
 
-  useEffect(() => {
-    const getPosts = async () => {
-      const posts = await getDocs(postsCollectionRef);
-
-      setPosts(posts.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getPosts();
-  }, []);
+  const { currentStudent, students } = useAuth();
 
   const createPost = async (event) => {
     event.preventDefault();
 
     const { date, time } = GetCurrentDateTime();
-    console.log("data din post form", currentStudent);
-    console.log("event:", event.target);
     try {
       if (
         newTitle.length > 2 &&
@@ -59,22 +44,23 @@ function PostForm() {
           date: date,
           time: time,
         });
-        console.log(form.current);
-        if (
-          Object.keys(currentStudent).length === 0 ||
-          (currentStudent.group !== type &&
-            currentStudent.specialization !== type &&
-            type !== "College")
-        ) {
-        } else {
-          sendNotification(newTitle, type);
-          emailjs.send(
-            "service_g3elv0p",
-            "template_xkwc30w",
-            { title: newTitle, type: type, email: currentStudent.email },
-            "wGFIRDXI0dcdI2h6X"
-          );
-        }
+
+        const filteredStudents = students.filter(
+          (student) =>
+            student.group === type ||
+            student.specialization === type ||
+            type === "College"
+        );
+        const studentEmails = filteredStudents.map((student) => student.email);
+
+        const emailData = {
+          title: newTitle,
+          type: type,
+          email: studentEmails,
+        };
+
+        sendNotification(emailData);
+
         history.push("/");
       } else {
         setError("Wrong title, message or type.");
@@ -93,7 +79,7 @@ function PostForm() {
       <Card.Body>
         <h2 className="text-center mb-4">Create a new post</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <form ref={form} defaultValue={emaill}>
+        <form ref={form}>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input

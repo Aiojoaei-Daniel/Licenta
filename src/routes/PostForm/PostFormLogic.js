@@ -5,8 +5,7 @@ import { db } from "../../firebase-config";
 import { useHistory } from "react-router-dom";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
 
-//!!!! this is not usee anywhere
-
+//! not used
 function PostFormLogic(props) {
   const postsCollectionRef = collection(db, "posts");
 

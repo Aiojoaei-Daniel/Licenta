@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory, Redirect } from "react-router-dom";
@@ -6,7 +6,7 @@ import InputGroupSelect from "../../components/common/InputGroupSelect";
 import PostTypes from "../../components/common/PostTypes";
 
 import { db } from "../../firebase-config";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 import { useAuth } from "./../../contexts/AuthContext";
 
@@ -15,27 +15,16 @@ function StudentDataForm() {
   const { years: groups, specializations } = PostTypes();
   const history = useHistory();
 
-  const [students, setStudents] = useState([]);
   const [studentEmail, setStudentEmail] = useState("");
   const [studentGroup, setStudentGroup] = useState();
-  const [studentSpecialization, setStudentSpecialization] = useState("");
+  const [studentSpecialization, setStudentSpecialization] = useState();
   const [error, setError] = useState();
   const {
-    currentUser,
+    students,
     currentStudent,
     setCurrentStudent,
     setStudentInLocalStorage,
   } = useAuth();
-
-  useEffect(() => {
-    const getStudents = async () => {
-      const students = await getDocs(studentsCollectionRef);
-
-      setStudents(students.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getStudents();
-    students.map((student) => console.log(student));
-  }, []);
 
   const registerStudent = async (event) => {
     event.preventDefault();
@@ -54,13 +43,17 @@ function StudentDataForm() {
     if (
       // !currentUser &&
       !studentInDataBase &&
-      Object.keys(currentStudent).length === 0
+      Object.keys(currentStudent).length === 0 &&
+      studentData.specialization !== undefined &&
+      studentData.specialization !== "Choose..." &&
+      studentData.group !== "Choose..." &&
+      studentData.group !== undefined
     ) {
       await addDoc(studentsCollectionRef, studentData);
       setCurrentStudent(studentData);
       setStudentInLocalStorage(studentData);
       history.push("/");
-    } else if (!studentInDataBase) setError("Already connected");
+    } else if (!studentInDataBase) setError("Already connected or wrong data.");
   };
 
   return Object.keys(currentStudent).length !== 0 ? (
