@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import { useAuth } from "../../contexts/AuthContext";
 
-import "./Login.css";
-
 function LoginLogic() {
   const emailRef = useRef();
   const passwordRef = useRef();

@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 import LoginLogic from "./LoginLogic";
 
-import "./Login.css";
+import "./login.css";
 
 const Login = () => {
   const { currentUser, error, emailRef, passwordRef, loading, handleSubmit } =

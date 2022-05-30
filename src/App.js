@@ -3,17 +3,17 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import AuthProvider from "./contexts/AuthContext";
 import PostsProvider from "./contexts/PostsContext";
-import PrivateRoute from "./components/common/PrivateRoute";
 
-import Navbar from "./components/Navbar/Navbar";
-import Login from "./routes/Login/Login";
-import StudentDataForm from "./routes/StudentDataForm/StudentDataForm";
-import StudentLogin from "./routes/StudentLogin/StudentLogin";
-import Home from "./routes/Home/Home";
-import PostForm from "./routes/PostForm/PostForm";
-import Post from "./routes/Post/Post";
-import EditPost from "./routes/EditPost/EditPost";
-// import NotFound from "./components/common/NotFound";
+import { Navbar, PrivateRoute } from "./components";
+import {
+  EditPost,
+  Home,
+  Login,
+  Post,
+  PostForm,
+  StudentDataForm,
+  StudentLogin,
+} from "./routes";
 
 import "./App.css";
 

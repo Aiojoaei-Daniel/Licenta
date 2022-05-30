@@ -8,7 +8,6 @@ function Post() {
   const { posts } = usePosts();
   const { id } = useParams();
   const post = posts.find((post) => post.id === id);
-  console.log(posts);
 
   return !post ? (
     <></>
@@ -22,7 +21,7 @@ function Post() {
               justifyContent: "flex-end",
             }}
           >
-            <a
+            <p
               style={{
                 border: "1px solid black",
                 padding: "5px",
@@ -31,8 +30,8 @@ function Post() {
               }}
             >
               {post.type}
-            </a>
-            <a
+            </p>
+            <p
               style={{
                 border: "1px solid black",
                 padding: "5px",
@@ -41,8 +40,8 @@ function Post() {
               }}
             >
               {post.time}
-            </a>
-            <a
+            </p>
+            <p
               style={{
                 border: "1px solid black",
                 padding: "5px",
@@ -51,7 +50,7 @@ function Post() {
               }}
             >
               {post.date}
-            </a>
+            </p>
           </div>
           <h1 style={{ color: "black", textAlign: "center" }}>{post.title}</h1>
           <p style={{ maxWidth: 800 }}>{post.message}</p>

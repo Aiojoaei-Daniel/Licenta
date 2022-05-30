@@ -7,8 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import InputGroupSelect from "./../../components/common/InputGroupSelect";
 import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
 import PostTypes from "../../components/common/PostTypes";
-import { useAuth } from "./../../contexts/AuthContext";
-import sendNotification from "../../components/common/SendNotification";
+import SendNotification from "./../../components/common/SendNotification";
 
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
@@ -22,7 +21,7 @@ function PostForm() {
   const { postType } = PostTypes();
   const form = useRef();
 
-  const { currentStudent, students } = useAuth();
+  const { sendEmail } = SendNotification();
 
   const createPost = async (event) => {
     event.preventDefault();
@@ -45,21 +44,7 @@ function PostForm() {
           time: time,
         });
 
-        const filteredStudents = students.filter(
-          (student) =>
-            student.group === type ||
-            student.specialization === type ||
-            type === "College"
-        );
-        const studentEmails = filteredStudents.map((student) => student.email);
-
-        const emailData = {
-          title: newTitle,
-          type: type,
-          email: studentEmails,
-        };
-
-        sendNotification(emailData);
+        sendEmail(newTitle, type);
 
         history.push("/");
       } else {

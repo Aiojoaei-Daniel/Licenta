@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 
-import Posts from "../Posts/Posts";
-import CategorySection from "../../components/CategorySection/CategorySection";
-import PostTypes from "../../components/common/PostTypes";
+import { CategorySection, PostTypes } from "../../components";
 import { useAuth } from "../../contexts/AuthContext";
+import Posts from "../Posts/Posts";
 
-import "./Home.css";
+import "./home.css";
 
 function Home({ setPost, searchValue }) {
   const [selectedType, setSelectedType] = useState("All");
