@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory, Redirect } from "react-router-dom";
-
-import { useAuth } from "./../../contexts/AuthContext";
-import { db } from "../../firebase-config";
-
 import { collection, getDocs } from "firebase/firestore";
 import _ from "lodash";
+
+import { useAuth } from "../../contexts/AuthContext";
+import { db } from "../../firebase-config";
 
 function StudentLogin() {
   const studentsCollectionRef = collection(db, "students");

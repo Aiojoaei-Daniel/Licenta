@@ -2,9 +2,9 @@ import React from "react";
 import { Card, Alert } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
-import InputGroupSelect from "../../components/common/InputGroupSelect";
+import InputGroupSelect from "../../components/InputGroupSelect";
 import EditPostLogic from "./EditPostLogic";
-import PostTypes from "../../components/common/PostTypes";
+import postsType from "./../../utils/postsType";
 
 import { usePosts } from "./../../contexts/PostsContext";
 
@@ -21,17 +21,17 @@ function EditPost() {
     form,
   } = EditPostLogic(post ? post : {});
 
-  const { postType } = PostTypes();
+  const { postType } = postsType();
   return !post ? (
     <></>
   ) : (
     <Card>
       <Card.Body>
-        <h2 className="text-center mb-4">Edit Post</h2>
+        <h2 className="text-center mb-4">Modifică Postare</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <form ref={form}>
           <div className="form-group">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Titlul Postării</label>
             <input
               type="text"
               className="form-control"
@@ -46,7 +46,7 @@ function EditPost() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Conținutul postării</label>
             <textarea
               className="form-control"
               id="message"
@@ -62,7 +62,7 @@ function EditPost() {
             onChange={handlePostType}
             prevValue={post.type}
             values={postType}
-            label="Post Type"
+            label="Tipul postării"
             name="type"
           />
           <button
@@ -70,10 +70,10 @@ function EditPost() {
             onClick={updatePost}
             className="btn btn-primary"
           >
-            Update Post
+            Modifică
           </button>
           <Link to="/" className="btn btn-dark">
-            Cancel
+            Anulează
           </Link>
         </form>
       </Card.Body>

@@ -1,17 +1,17 @@
 import emailjs from "emailjs-com";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const SendNotification = () => {
   const { students } = useAuth();
 
   const sendEmail = (title, type) => {
-    console.log(students);
     const filteredStudents = students.filter(
       (student) =>
         student.group === type ||
         student.specialization === type ||
         type === "College"
     );
+
     const studentEmails = filteredStudents.map((student) => student.email);
 
     const emailData = {

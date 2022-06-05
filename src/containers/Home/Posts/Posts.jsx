@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 
-import Pagination from "./../../components/Pagination/Pagination";
+import Pagination from "../../../components/Pagination/Pagination";
 
 import PostsLogic from "./PostsLogic";
 
@@ -93,7 +93,7 @@ function Posts({ setPost, selectedType, searchValue, currentUser }) {
                     handlePostClick(post);
                   }}
                 >
-                  Edit
+                  Modifică
                 </Link>
                 <button
                   className="btn btn-danger"
@@ -101,7 +101,7 @@ function Posts({ setPost, selectedType, searchValue, currentUser }) {
                     deletePost(post.id);
                   }}
                 >
-                  Delete
+                  Șterge
                 </button>
               </div>
             )}

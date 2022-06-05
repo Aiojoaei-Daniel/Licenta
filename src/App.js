@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import AuthProvider from "./contexts/AuthContext";
 import PostsProvider from "./contexts/PostsContext";
 
-import { Navbar, PrivateRoute } from "./components";
+import { PrivateRoute, Navbar, NotFound } from "./components";
 import {
   EditPost,
   Home,
@@ -13,7 +13,7 @@ import {
   PostForm,
   StudentDataForm,
   StudentLogin,
-} from "./routes";
+} from "./containers";
 
 import "./App.css";
 
@@ -44,7 +44,6 @@ function App() {
                 component={EditPost}
                 item={post}
               />
-              {/* <Route path="/not-found" component={NotFound} /> */}
               <Route
                 exact
                 path="/"
@@ -56,7 +55,8 @@ function App() {
                   />
                 )}
               />
-              {/* <Redirect to="/not-found" /> */}
+              {/* <Route path="/not-found" component={NotFound} />
+              <Redirect to="/not-found" /> */}
             </PostsProvider>
           </AuthProvider>
         </Switch>

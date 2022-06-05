@@ -12,7 +12,7 @@ function InputGroupSelect({ onChange, prevValue, values, label, name }) {
         onChange={onChange}
         name={name}
       >
-        <option>{prevValue || "Choose..."}</option>
+        <option>{prevValue || "Alege tipul postării..."}</option>
         {values.map((value) => (
           <option key={value}>{value}</option>
         ))}

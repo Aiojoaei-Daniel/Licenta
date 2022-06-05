@@ -1,10 +1,10 @@
 import React from "react";
 import _ from "lodash";
 
-import PostTypes from "../common/PostTypes";
+import postsType from "../../utils/postsType";
 
 const CategorySection = ({ setSelectedType }) => {
-  const { categories } = PostTypes();
+  const { categories } = postsType();
 
   const handleType = (value) => {
     setSelectedType(value);

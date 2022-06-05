@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
+
 import { auth, db } from "../firebase-config";
 
 const AuthContext = React.createContext();
@@ -11,7 +12,7 @@ export function useAuth() {
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const [currentStudent, setCurrentStudent] = useState({});
+  // const [currentStudent, setCurrentStudent] = useState({});
   const [students, setStudents] = useState([]);
   const studentsCollectionRef = collection(db, "students");
 
@@ -27,15 +28,15 @@ function AuthProvider({ children }) {
     return auth.signOut();
   }
 
-  function setStudentInLocalStorage(student) {
-    localStorage.setItem("email", JSON.stringify(student.email));
-    localStorage.setItem("group", JSON.stringify(student.group));
-    localStorage.setItem(
-      "specialization",
-      JSON.stringify(student.specialization)
-    );
-    localStorage.setItem("id", JSON.stringify(student.id));
-  }
+  // function setStudentInLocalStorage(student) {
+  //   localStorage.setItem("email", JSON.stringify(student.email));
+  //   localStorage.setItem("group", JSON.stringify(student.group));
+  //   localStorage.setItem(
+  //     "specialization",
+  //     JSON.stringify(student.specialization)
+  //   );
+  //   localStorage.setItem("id", JSON.stringify(student.id));
+  // }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -43,12 +44,12 @@ function AuthProvider({ children }) {
       setLoading(false);
     });
 
-    const student = {
-      email: JSON.parse(localStorage.getItem("email")),
-      group: JSON.parse(localStorage.getItem("group")),
-      specialization: JSON.parse(localStorage.getItem("specialization")),
-    };
-    setCurrentStudent(student.email !== null ? student : {});
+    // const student = {
+    //   email: JSON.parse(localStorage.getItem("email")),
+    //   group: JSON.parse(localStorage.getItem("group")),
+    //   specialization: JSON.parse(localStorage.getItem("specialization")),
+    // };
+    // setCurrentStudent(student.email !== null ? student : {});
 
     const getStudents = async () => {
       const students = await getDocs(studentsCollectionRef);
@@ -66,9 +67,6 @@ function AuthProvider({ children }) {
     logout,
     students,
     currentUser,
-    currentStudent,
-    setCurrentStudent,
-    setStudentInLocalStorage,
   };
 
   return (

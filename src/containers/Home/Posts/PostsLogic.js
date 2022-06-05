@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import _ from "lodash";
 
-import { db } from "../../firebase-config";
-import { paginate } from "./../../components/Pagination/Paginate";
-import { usePosts } from "./../../contexts/PostsContext";
+import { db } from "../../../firebase-config";
+import { paginate } from "../../../components/Pagination/Paginate";
+import { usePosts } from "../../../contexts/PostsContext";
 
 function PostsLogic(setPost, selectedType, searchValue) {
   const postsCollectionRef = collection(db, "posts");

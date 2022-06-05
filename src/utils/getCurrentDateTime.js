@@ -1,4 +1,4 @@
-function GetCurrentDateTime(props) {
+function getCurrentDateTime(props) {
   const currentDate = new Date();
 
   const date =
@@ -20,4 +20,4 @@ function GetCurrentDateTime(props) {
   return { date, time };
 }
 
-export default GetCurrentDateTime;
+export default getCurrentDateTime;

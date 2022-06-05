@@ -1,13 +1,11 @@
 import React, { useState, useRef } from "react";
 import { collection, addDoc } from "firebase/firestore";
-
-import { db } from "../../firebase-config";
 import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import InputGroupSelect from "./../../components/common/InputGroupSelect";
-import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
-import PostTypes from "../../components/common/PostTypes";
-import SendNotification from "./../../components/common/SendNotification";
+
+import { db } from "../../firebase-config";
+import InputGroupSelect from "./../../components/InputGroupSelect";
+import { getCurrentDateTime, postsType, SendNotification } from "./../../utils";
 
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
@@ -18,7 +16,7 @@ function PostForm() {
   const [error, setError] = useState("");
   const history = useHistory();
 
-  const { postType } = PostTypes();
+  const { postType } = postsType();
   const form = useRef();
 
   const { sendEmail } = SendNotification();
@@ -26,7 +24,7 @@ function PostForm() {
   const createPost = async (event) => {
     event.preventDefault();
 
-    const { date, time } = GetCurrentDateTime();
+    const { date, time } = getCurrentDateTime();
     try {
       if (
         newTitle.length > 2 &&
@@ -62,11 +60,11 @@ function PostForm() {
   return (
     <Card>
       <Card.Body>
-        <h2 className="text-center mb-4">Create a new post</h2>
+        <h2 className="text-center mb-4">Creează o postare nouă</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <form ref={form}>
           <div className="form-group">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Titlul postării</label>
             <input
               name="title"
               type="text"
@@ -80,7 +78,7 @@ function PostForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Conținutul postării</label>
             <textarea
               className="form-control"
               id="message"
@@ -94,7 +92,7 @@ function PostForm() {
           <InputGroupSelect
             onChange={handlePostType}
             values={postType}
-            label="Post Type"
+            label="Tipul postării"
             name="type"
           />
           <button
@@ -102,10 +100,10 @@ function PostForm() {
             onClick={createPost}
             className="btn btn-primary"
           >
-            Create Post
+            Creează postare
           </button>
           <Link to="/" className="btn btn-dark">
-            Cancel
+            Anulează
           </Link>
         </form>
       </Card.Body>

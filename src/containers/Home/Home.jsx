@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 
-import { CategorySection, PostTypes } from "../../components";
 import { useAuth } from "../../contexts/AuthContext";
-import Posts from "../Posts/Posts";
+import postsType from "./../../utils/postsType";
+import CategorySection from "../../components/CategorySection/CategorySection";
+import Posts from "../Home/Posts/Posts";
 
 import "./home.css";
 
 function Home({ setPost, searchValue }) {
   const [selectedType, setSelectedType] = useState("All");
-  const { types } = PostTypes();
+  const { types } = postsType();
   const { currentUser } = useAuth();
 
   return (

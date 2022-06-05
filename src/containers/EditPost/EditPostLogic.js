@@ -3,9 +3,9 @@ import { updateDoc, doc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
 import { db } from "../../firebase-config";
-import GetCurrentDateTime from "../../components/common/GetCurrentDateTime";
+import getCurrentDateTime from "../../utils/getCurrentDateTime";
 
-import SendNotification from "../../components/common/SendNotification";
+import SendNotification from "../../utils/SendNotification";
 
 function EditPostLogic(post) {
   const [updatedTitle, setUpdatedTitle] = useState(post.title);
@@ -21,7 +21,7 @@ function EditPostLogic(post) {
   const updatePost = async (event) => {
     event.preventDefault();
 
-    const { date, time } = GetCurrentDateTime();
+    const { date, time } = getCurrentDateTime();
 
     const postDoc = doc(db, "posts", post.id);
 

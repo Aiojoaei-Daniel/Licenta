@@ -20,7 +20,7 @@ const Login = () => {
         <div className="w-100" style={{ maxWidth: "600px" }}>
           <Card>
             <Card.Body>
-              <h2 className="text-center mb-4">Log In</h2>
+              <h2 className="text-center mb-4">Conectare Cadru Universitar</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Form.Group id="email">
@@ -28,11 +28,11 @@ const Login = () => {
                   <Form.Control type="email" ref={emailRef} required />
                 </Form.Group>
                 <Form.Group id="password" className="password">
-                  <Form.Label>Password </Form.Label>
+                  <Form.Label>Parolă</Form.Label>
                   <Form.Control type="password" ref={passwordRef} required />
                 </Form.Group>
                 <Button className="w-100" type="submit" disabled={loading}>
-                  Log In
+                  Conectare
                 </Button>
               </Form>
             </Card.Body>

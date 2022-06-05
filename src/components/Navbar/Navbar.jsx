@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth } from "./../../contexts/AuthContext";
-import LogoutLogic from "./../../routes/Login/LogoutLogic";
+import LogoutLogic from "./../../containers/Login/LogoutLogic";
 
 function Navbar({ setSearchValue }) {
-  const { currentUser, currentStudent, setCurrentStudent } = useAuth();
-  const { handleLogout, handleStudentLogout } = LogoutLogic(setCurrentStudent);
-  // console.log("Navbar", currentStudent);
+  const { currentUser, setCurrentStudent } = useAuth();
+  const { handleLogout } = LogoutLogic(setCurrentStudent);
   return (
     <>
       <nav
@@ -30,25 +29,25 @@ function Navbar({ setSearchValue }) {
           <ul className="navbar-nav mr-auto">
             <li>
               <Link to="/" className="btn" style={{ color: "white" }}>
-                Home
+                Acasă
               </Link>
             </li>
             <li className="nav-item">
               {currentUser && (
                 <Link to="/new-post" className="btn" style={{ color: "white" }}>
-                  New Post
+                  Postare Nouă
                 </Link>
               )}
             </li>
             <li className="nav-item">
               {!currentUser && (
                 <Link to="/login" className="btn" style={{ color: "white" }}>
-                  Login
+                  Autentificare
                 </Link>
               )}
               {currentUser && (
                 <button onClick={handleLogout} className="btn btn-dark">
-                  Logout
+                  Deconectare
                 </button>
               )}
             </li>
@@ -58,29 +57,20 @@ function Navbar({ setSearchValue }) {
               </Link>
             </li> */}
             <li className="nav-item">
-              {Object.keys(currentStudent).length === 0 && (
-                <Link
-                  to="/student-login"
-                  className="btn"
-                  style={{ color: "white" }}
-                >
-                  Student Login
-                </Link>
-              )}
-            </li>
-            <li>
-              {Object.keys(currentStudent).length !== 0 && (
-                <button onClick={handleStudentLogout} className="btn btn-dark">
-                  Student Logout
-                </button>
-              )}
+              <Link
+                to="/student-register"
+                className="btn"
+                style={{ color: "white" }}
+              >
+                Inregistrare student
+              </Link>
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control mr-sm-2"
               type="search"
-              placeholder="Search"
+              placeholder="Caută o postare"
               aria-label="Search"
               onChange={(event) => setSearchValue(event.target.value)}
             />
