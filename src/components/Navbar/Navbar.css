@@ -1,0 +1,118 @@
+.gradient__bg1 {
+  background: -moz-linear-gradient(
+    90deg,
+    rgb(3, 181, 166) 0%,
+    rgba(15, 40, 104, 1) 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(
+    90deg,
+    rgb(8, 193, 178) 0%,
+    rgba(15, 40, 104, 1) 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(
+    90deg,
+    rgb(8, 188, 173) 0%,
+    rgba(15, 40, 104, 1) 100%
+  );
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0F2868', endColorstr='#09E1D0', GradientType=0 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(
+    90deg,
+    rgb(9, 189, 174) 0%,
+    rgba(15, 40, 104, 1) 100%
+  );
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(
+    90deg,
+    rgb(10, 193, 178) 0%,
+    rgba(15, 40, 104, 1) 100%
+  );
+}
+
+.gradient__bg {
+  /* ff 3.6+ */
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(94, 49, 175, 1) 0%,
+    rgba(186, 1, 218, 1) 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(94, 49, 175, 1) 0%,
+    rgba(186, 1, 218, 1) 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(
+    90deg,
+    rgba(94, 49, 175, 1) 0%,
+    rgba(186, 1, 218, 1) 100%
+  );
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#BA01DA', endColorstr='#5E31AF', GradientType=0 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(
+    90deg,
+    rgba(94, 49, 175, 1) 0%,
+    rgba(186, 1, 218, 1) 100%
+  );
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(
+    90deg,
+    rgba(94, 49, 175, 1) 0%,
+    rgba(186, 1, 218, 1) 100%
+  );
+}
+
+.navbar {
+  height: clamp(50px, 300px, 1000px);
+  display: flex;
+  align-items: flex-start;
+  background: url("../../images/reshot-illustration-education-items-4T8PQJV9FN.png")
+    no-repeat top;
+  background-size: cover;
+  /* background: url("../../images/pexels-pixabay-261909.jpg") no-repeat center;
+  background-size: cover; */
+  /* background: url("../../images/scholarship-7235998_1280.png") no-repeat center;
+  background-size: cover; */
+  /* background-size: 1600px 400px; */
+  /* background-repeat: no-repeat; */
+  box-shadow: none;
+}
+
+.navbar-btns,
+.navbar > a {
+  display: flex;
+  margin: 2rem 1rem;
+}
+
+.navbar-btn {
+  color: white;
+  /* box-shadow: 1p; */
+  font-weight: bold;
+  font-size: large;
+  font-family: var(--font-family);
+  margin: 0 2rem;
+  /* border: 3px solid black; */
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-btn:hover {
+  color: rgb(63, 10, 80);
+}

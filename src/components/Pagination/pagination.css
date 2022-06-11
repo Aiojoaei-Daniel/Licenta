@@ -1,0 +1,22 @@
+.pagination {
+  margin: 0 0 40px 0;
+}
+
+.pagination > li > a:hover {
+  background-color: rgb(96, 14, 173);
+}
+
+.pg-item-active {
+  background-color: rgb(196, 6, 249);
+  border-radius: 5px;
+}
+
+.pg-item {
+  background-color: blueviolet;
+  border-radius: 5px;
+  color: white;
+}
+
+.pagination > li {
+  color: white;
+}

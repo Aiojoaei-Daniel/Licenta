@@ -1,0 +1,102 @@
+.header {
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: blueviolet;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 2rem auto;
+}
+
+.header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title > p {
+  margin: 0;
+  color: white;
+  font-size: 5vmin;
+}
+
+.form-inline {
+  margin-right: 1rem;
+}
+
+.posts-section {
+  width: 95%;
+  align-self: center;
+}
+
+.grid-posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.post {
+  border-radius: 5px;
+  background: rgb(245, 245, 245);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+  border-bottom: 10px solid blueviolet;
+}
+
+.post > ul > a > h1 {
+  color: var(--color-text);
+  text-align: center;
+  /* margin-top: 3rem; */
+}
+
+.post > ul > p {
+  color: var(--color-text);
+}
+
+.post > ul > div > p {
+  color: var(--color-text);
+  margin: 10px;
+}
+.post > ul > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.type-btn {
+  display: flex;
+}
+
+.edit-btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-btns > a {
+  max-width: 9rem;
+  background-color: blueviolet;
+}
+
+.edit-btns > .delete:hover {
+  background-color: red;
+  color: white;
+}
+.edit-btns > .edit:hover {
+  background-color: rgb(48, 160, 246);
+  color: white;
+}
+
+.type {
+  text-align: center;
+}
+
+.time,
+.date {
+  max-width: 10rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.date {
+  align-self: flex-end;
+}

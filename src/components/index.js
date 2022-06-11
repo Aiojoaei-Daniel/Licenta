@@ -3,3 +3,4 @@ export { default as InputGroupSelect } from "./InputGroupSelect";
 export { default as Navbar } from "./Navbar/Navbar";
 export { default as CategorySection } from "./CategorySection/CategorySection";
 export { default as NotFound } from "./NotFound";
+export { default as Footer } from "./Footer/Footer";

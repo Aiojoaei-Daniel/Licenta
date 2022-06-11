@@ -1,59 +1,54 @@
 import React from "react";
-import _ from "lodash";
 
 import postsType from "../../utils/postsType";
+
+import "./categorySection.css";
 
 const CategorySection = ({ setSelectedType }) => {
   const { categories } = postsType();
 
-  const handleType = (value) => {
-    setSelectedType(value);
-  };
-
   return (
-    <div>
-      {categories.map((item) => (
-        <div className="dropdown" key={item[0]}>
-          <a
-            className={
-              item[1]
-                ? "btn btn-info dropdown-toggle btn-block"
-                : "btn btn-info btn-block"
-            }
-            style={{ margin: "5px" }}
-            role="button"
-            id="dropdownMenuLink"
-            data-bs-toggle={item[1] ? "dropdown" : ""}
-            aria-expanded="true"
-            onClick={!item[1] ? () => handleType(item[0]) : null}
-          >
-            {item[0]}
-          </a>
-          <ul
-            className="dropdown-menu"
-            aria-labelledby="dropdownMenuLink"
-            style={{
-              overflow: "scroll",
-              height: "110px",
-              overflowX: "hidden",
-            }}
-          >
-            {item[1] &&
-              item[1].map((groupNumber) => (
-                <li key={groupNumber}>
-                  <a
-                    className="dropdown-item"
-                    href="#"
-                    onClick={() => handleType(groupNumber)}
-                  >
-                    {groupNumber}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="list-group">
+        <ul>
+          <li>
+            <a href="#">
+              Tipuri <i className="fas fa-caret-down"></i>
+            </a>
+            <div className="dropdown_menu">
+              <ul>
+                {categories.map((type) => (
+                  <li className="dropdown_submenu">
+                    <a
+                      href="#"
+                      onClick={!type[1] ? () => setSelectedType(type[0]) : null}
+                    >
+                      {type[0]}{" "}
+                      <i className={type[1] ? "fas fa-caret-right" : ""}></i>
+                      {type[1] &&
+                        type[1].map((subtype) => (
+                          <div className="submenu">
+                            <ul>
+                              <li>
+                                <a
+                                  href="#"
+                                  onClick={() => setSelectedType(subtype)}
+                                >
+                                  {subtype}
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        ))}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 
