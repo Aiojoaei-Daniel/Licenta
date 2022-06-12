@@ -10,27 +10,22 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   const pages = _.range(1, pagesCount + 1);
 
   return (
-    <nav>
-      <ul className="pagination">
-        {pages.map((page) => (
-          <li
-            key={page}
-            // className={page === currentPage ? "pg-item-active" : "pg-item"}
+    <ul className="pagination">
+      {pages.map((page) => (
+        <li key={page}>
+          <a
+            className={
+              page === currentPage
+                ? "page-link pg-item-active"
+                : "page-link pg-item"
+            }
+            onClick={() => onPageChange(page)}
           >
-            <a
-              className={
-                page === currentPage
-                  ? "page-link pg-item-active"
-                  : "page-link pg-item"
-              }
-              onClick={() => onPageChange(page)}
-            >
-              {page}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+            {page}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 };
 

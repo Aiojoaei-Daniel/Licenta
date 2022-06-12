@@ -37,7 +37,7 @@
   );
 }
 
-.gradient__bg {
+.gradient__bg2 {
   /* ff 3.6+ */
   background: -moz-linear-gradient(
     90deg,
@@ -78,16 +78,14 @@
 }
 
 .navbar {
-  height: clamp(50px, 300px, 1000px);
+  height: clamp(50px, 600px, 1000px);
   display: flex;
   align-items: flex-start;
-  background: url("../../images/reshot-illustration-education-items-4T8PQJV9FN.png")
+  /* background: url("../../images/reshot-illustration-education-items-4T8PQJV9FN.png")
     no-repeat top;
+  background-size: cover; */
+  background: url("../../images/navbar/5514.jpg") no-repeat center;
   background-size: cover;
-  /* background: url("../../images/pexels-pixabay-261909.jpg") no-repeat center;
-  background-size: cover; */
-  /* background: url("../../images/scholarship-7235998_1280.png") no-repeat center;
-  background-size: cover; */
   /* background-size: 1600px 400px; */
   /* background-repeat: no-repeat; */
   box-shadow: none;
@@ -100,7 +98,7 @@
 }
 
 .navbar-btn {
-  color: white;
+  color: var(--color-text);
   /* box-shadow: 1p; */
   font-weight: bold;
   font-size: large;
@@ -114,5 +112,5 @@
 }
 
 .navbar-btn:hover {
-  color: rgb(63, 10, 80);
+  color: var(--color-text);
 }

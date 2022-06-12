@@ -1,0 +1,14 @@
+form > .btn {
+  background-color: var(--main-color);
+  color: var(--color-btns);
+}
+
+.edit-btn:hover {
+  background-color: green;
+  color: var(--color-btns);
+}
+
+.cancel:hover {
+  background-color: black;
+  color: var(--color-btns);
+}

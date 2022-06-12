@@ -19,14 +19,14 @@ const SendNotification = () => {
       type: type,
       email: studentEmails,
     };
-    if (studentEmails !== []) {
-      emailjs.send(
-        "service_g3elv0p",
-        "template_xkwc30w",
-        emailData,
-        "wGFIRDXI0dcdI2h6X"
-      );
-    }
+    // if (studentEmails !== []) {
+    //   emailjs.send(
+    //     "service_g3elv0p",
+    //     "template_xkwc30w",
+    //     emailData,
+    //     "wGFIRDXI0dcdI2h6X"
+    //   );
+    // }
   };
   //   addNotification({
   //     title: "Supaaaaa",

@@ -30,13 +30,10 @@ function Navbar() {
             Deconectare
             </a>
           )} */}
-        <Link to="/student-register" className="navbar-btn">
-          Inregistrare student
-        </Link>
         <div>{/* <img src="" alt="" /> */}</div>
       </div>
       {!currentUser && (
-        <Link to="/login" className="navbar-btn" style={{ color: "white" }}>
+        <Link to="/login" className="navbar-btn">
           Autentificare
         </Link>
       )}

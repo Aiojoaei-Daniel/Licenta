@@ -10,7 +10,17 @@
   --color-footer: #031b34;
   --color-blog: #042c54;
   --color-text: #3c4955;
-  --color-subtext: #ff8a71;
+  --color-title: whitesmoke;
+  --color-btns: whitesmoke;
+  --bg-post: whitesmoke;
+  --bg-type-btn: whitesmoke;
+  /* --main-color: blueviolet;
+  --main-darkcolor: rgb(92, 0, 179); */
+  --main-color: rgb(9, 178, 194);
+  --main-darkcolor: rgb(6, 145, 157);
+  /* --main-color: rgb(182, 76, 0);
+  --main-darkcolor: rgb(130, 56, 3); */
+  --color-shadow: rgba(0, 0, 0, 0.2);
 }
 
 body {

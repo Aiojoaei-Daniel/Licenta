@@ -8,6 +8,8 @@ import postsType from "./../../utils/postsType";
 
 import { usePosts } from "./../../contexts/PostsContext";
 
+import "./editPost.css";
+
 function EditPost() {
   const { posts } = usePosts();
   const { id } = useParams();
@@ -65,14 +67,10 @@ function EditPost() {
             label="Tipul postării"
             name="type"
           />
-          <button
-            type="submit"
-            onClick={updatePost}
-            className="btn btn-primary"
-          >
+          <button type="submit" onClick={updatePost} className="btn edit-btn">
             Modifică
           </button>
-          <Link to="/" className="btn btn-dark">
+          <Link to="/" className="btn cancel">
             Anulează
           </Link>
         </form>

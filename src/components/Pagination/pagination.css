@@ -2,21 +2,24 @@
   margin: 0 0 40px 0;
 }
 
+.pagination > li > a {
+  max-height: 2.5rem;
+}
+
 .pagination > li > a:hover {
-  background-color: rgb(96, 14, 173);
+  background-color: var(--main-darkcolor);
 }
 
 .pg-item-active {
-  background-color: rgb(196, 6, 249);
+  background-color: var(--main-darkcolor);
   border-radius: 5px;
 }
 
 .pg-item {
-  background-color: blueviolet;
+  background-color: var(--main-color);
   border-radius: 5px;
-  color: white;
 }
 
 .pagination > li {
-  color: white;
+  color: var(--color-btns);
 }
