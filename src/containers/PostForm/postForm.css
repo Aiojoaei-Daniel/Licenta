@@ -1,0 +1,28 @@
+.new-post-page {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.new-post-body {
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem 0;
+}
+
+.new-post-form {
+  background-color: white;
+  margin: 2rem 2rem 2rem 4rem;
+  width: 40%;
+  height: auto;
+  border-radius: 5px;
+  border-top: 6px solid var(--main-color);
+}
+
+.new-post-body > img {
+  align-self: center;
+  /* width: clamp(100px, 90%, 600px); */
+  width: 50%;
+  height: auto;
+}

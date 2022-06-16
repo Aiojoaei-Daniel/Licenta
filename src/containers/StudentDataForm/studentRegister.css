@@ -1,0 +1,43 @@
+.register-body {
+  display: flex;
+  min-height: 30rem;
+  margin: 5rem 0;
+}
+
+.student-form {
+  border-top: 6px solid var(--main-color);
+  /* width: clamp(30rem, 70%, 40rem); */
+  width: 40%;
+  margin: 2rem 5rem;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-top: 1rem;
+}
+
+.register-btn {
+  margin-left: 0;
+}
+
+.register-btn:hover {
+  background-color: green;
+  color: var(--color-btns);
+}
+
+.cancel:hover {
+  background-color: black;
+  color: var(--color-btns);
+}
+
+.title {
+  text-align: center;
+  /* margin: 2rem 0; */
+  padding: 2rem 0;
+}
+
+.register-img {
+  width: 40%;
+  height: 80%;
+  /* margin-left: 2rem; */
+}

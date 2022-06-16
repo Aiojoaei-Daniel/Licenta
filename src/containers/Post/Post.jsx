@@ -1,8 +1,11 @@
 import React from "react";
-import { Card } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import { usePosts } from "../../contexts/PostsContext";
+import postImg from "../../images/forms/reshot-illustration-books-and-students-Q63WFPNSKL.png";
+
+import "./post.css";
 
 function Post() {
   const { posts } = usePosts();
@@ -12,51 +15,21 @@ function Post() {
   return !post ? (
     <></>
   ) : (
-    <Card style={{ marginLeft: "20px", marginRight: "20px" }}>
-      <Card.Body>
-        <>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <p
-              style={{
-                border: "1px solid black",
-                padding: "5px",
-                borderRadius: "5px",
-                marginRight: "5px",
-              }}
-            >
-              {post.type}
-            </p>
-            <p
-              style={{
-                border: "1px solid black",
-                padding: "5px",
-                borderRadius: "5px",
-                marginRight: "5px",
-              }}
-            >
-              {post.time}
-            </p>
-            <p
-              style={{
-                border: "1px solid black",
-                padding: "5px",
-                borderRadius: "5px",
-                marginRight: "5px",
-              }}
-            >
-              {post.date}
-            </p>
-          </div>
-          <h1 style={{ color: "black", textAlign: "center" }}>{post.title}</h1>
-          <p style={{ maxWidth: 800 }}>{post.message}</p>
-        </>
-      </Card.Body>
-    </Card>
+    <div className="post-page" id="post-page">
+      <div className="post-header">
+        <p className="post-type">{post.type}</p>
+        <p className="post-time">{post.time}</p>
+        <p className="post-date">{post.date}</p>
+      </div>
+      <h1>{post.title}</h1>
+      <div className="post-body">
+        <p>{post.message}</p>
+        <img src={postImg} alt="" />
+      </div>
+      <HashLink smooth to="/#posts-section">
+        <button className="back-btn">Inapoi la postari</button>
+      </HashLink>
+    </div>
   );
 }
 

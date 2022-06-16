@@ -1,0 +1,10 @@
+.alert-card {
+  width: 30rem;
+  padding: 0.5rem;
+  align-self: center;
+  text-align: center;
+  font-size: large;
+  background-color: rgb(247, 211, 211);
+  border-radius: 5px;
+  margin: 0;
+}

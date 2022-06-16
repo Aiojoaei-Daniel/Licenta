@@ -11,31 +11,31 @@ const CategorySection = ({ setSelectedType }) => {
     <>
       <div className="list-group">
         <ul>
-          <li>
-            <a href="#">
+          <li key="key1">
+            <a href="#" key="key1">
               Tipuri <i className="fas fa-caret-down"></i>
             </a>
             <div className="dropdown_menu">
               <ul>
-                {categories.map((type) => (
-                  <li className="dropdown_submenu">
+                {categories.map((type, index) => (
+                  <li className="dropdown_submenu" key={index + type[0]}>
                     <a
-                      href="#"
+                      href="/#posts-section"
                       onClick={!type[1] ? () => setSelectedType(type[0]) : null}
                     >
                       {type[0]}{" "}
                       <i className={type[1] ? "fas fa-caret-right" : ""}></i>
                       {type[1] &&
-                        type[1].map((subtype) => (
-                          <div className="submenu">
+                        type[1].map((subtype, index) => (
+                          <div className="submenu" key={subtype + index}>
                             <ul>
                               <li>
-                                <a
-                                  href="#"
+                                <p
+                                  href="/#posts-section"
                                   onClick={() => setSelectedType(subtype)}
                                 >
                                   {subtype}
-                                </a>
+                                </p>
                               </li>
                             </ul>
                           </div>

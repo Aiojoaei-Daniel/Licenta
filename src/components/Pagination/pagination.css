@@ -1,9 +1,13 @@
 .pagination {
-  margin: 0 0 40px 0;
+  margin: 1.5rem 0 3rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .pagination > li > a {
-  max-height: 2.5rem;
+  font-size: large;
+  padding: 0.8rem 1rem;
+  width: 2.6rem;
 }
 
 .pagination > li > a:hover {

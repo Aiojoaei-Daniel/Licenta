@@ -31,7 +31,8 @@
 
 .list-group:hover .dropdown_menu {
   background-color: var(--bg-type-btn);
-  border: 2px solid rgb(101, 101, 101);
+  /* border: 2px solid rgb(101, 101, 101); */
+  box-shadow: 1px 1px 5px 1px var(--color-shadow);
   display: block;
   position: absolute;
   margin-top: 2px;
@@ -52,8 +53,9 @@
   font-size: 1.2rem;
 }
 
-.submenu > ul > li > a {
+.submenu > ul > li > p {
   font-size: 1rem;
+  margin: 0;
 }
 
 .fas {
@@ -72,9 +74,38 @@
 
 .dropdown_submenu {
   overflow-y: auto;
-  max-height: 8rem;
+  max-height: 10rem;
 }
 
-.submenu ul li a {
+.submenu ul li p {
   color: var(--color-text);
+}
+
+.list-group > ul > li:hover,
+.dropdown_submenu:hover {
+  border-radius: 5px;
+  /* background-color: rgb(235, 235, 235); */
+  background-color: var(--main-darkcolor);
+}
+
+.list-group > ul > li:hover > a,
+.dropdown_submenu:hover > a,
+.submenu > ul > li > p:hover {
+  color: white;
+}
+
+.dropdown_submenu::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.dropdown_submenu::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(127, 127, 127, 0.3);
+  border-radius: 5px;
+}
+
+.dropdown_submenu::-webkit-scrollbar-thumb {
+  height: 1rem;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  outline: 1px solid var(--main-color);
 }

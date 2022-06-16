@@ -41,21 +41,61 @@
 .footer {
   background: var(--main-color);
   width: 100%;
-  height: 7rem;
+  height: 10rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.footer > p,
-.footer > a {
+.body-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+.body-footer > p,
+.body-footer > a {
   color: var(--color-title);
   margin: 0;
   max-height: 3rem;
-  max-width: 25rem;
+  max-width: 30rem;
+  font-size: larger;
+  font-weight: 400;
+  justify-self: center;
 }
 
-.footer > p {
+.body-footer > a:hover {
+  color: rgb(24, 24, 24);
+}
+
+.body-footer > p {
   font-size: large;
+}
+
+.footer > a {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+.footer > a > img {
+  height: 4rem;
+  width: 4rem;
+}
+
+.college-data {
+  display: flex;
+  align-items: center;
+  /* margin: 1rem; */
+  width: 20%;
+}
+.college-data > p {
+  margin-left: auto;
+}
+
+.up-button,
+.college-data {
+  min-width: 10rem;
+  margin: 2rem;
 }

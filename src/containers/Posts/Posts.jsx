@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Pagination from "../../components/Pagination/Pagination";
 import PostsLogic from "./PostsLogic";
-import CategorySection from "../../components/CategorySection/CategorySection";
+import { Pagination, CategorySection, NotFound } from "../../components";
 
+import postsImg from "../../images/posts/imgPosts1.png";
 import "./posts.css";
+import { HashLink } from "react-router-hash-link";
 
 function Posts({ setPost }) {
   const [searchValue, setSearchValue] = useState("");
@@ -24,12 +25,12 @@ function Posts({ setPost }) {
   } = PostsLogic(setPost, searchValue);
 
   return (
-    <div className="posts-section">
-      <div className="header">
+    <div className="posts-section" id="posts-section">
+      <div className="header" id="header">
         <div className="type-btn">
           <CategorySection items={types} setSelectedType={setSelectedType} />
         </div>
-        <div className="header-title">
+        <div className="header-title" id="header-title">
           <p>Noutăți despre Facultate</p>
         </div>
         <form className="form-inline my-2 my-lg-0">
@@ -42,53 +43,60 @@ function Posts({ setPost }) {
           />
         </form>
       </div>
-      <div className="grid-posts">
-        {pagedPosts.length === 0 ? (
-          <h1>No posts available</h1>
-        ) : (
-          pagedPosts.map((post) => (
-            <div key={post.id} className="post">
-              <ul>
-                <div>
-                  <p className="time">{post.time}</p>
-                  <p className="date">{post.date}</p>{" "}
-                  {/*sa inversez string ul */}
-                </div>
-                <Link
-                  to={`/post/${post.id}`}
-                  onClick={() => {
-                    handlePostClick(post);
-                  }}
-                >
-                  <h1>{post.title}</h1>
-                </Link>
-                <p className="type">{post.type}</p>
-              </ul>
-              {currentUser && (
-                <div className="edit-btns">
-                  <Link
-                    to={`/edit-post/${post.id}`}
-                    className="btn edit"
+      {pagedPosts.length === 0 ? (
+        <NotFound type="postare" />
+      ) : (
+        <div className="posts-body">
+          <div className="grid-posts">
+            {pagedPosts.map((post) => (
+              <div key={post.id} className="post">
+                <ul>
+                  <div>
+                    <p className="time">{post.time}</p>
+                    <p className="date">{post.date}</p>{" "}
+                    {/*sa inversez string ul */}
+                  </div>
+                  <HashLink
+                    smooth
+                    to={`/post/${post.id}/#post-page`}
                     onClick={() => {
                       handlePostClick(post);
                     }}
                   >
-                    Modifică
-                  </Link>
-                  <a
-                    className="btn delete"
-                    onClick={() => {
-                      deletePost(post.id);
-                    }}
-                  >
-                    Șterge
-                  </a>
-                </div>
-              )}
-            </div>
-          ))
-        )}
-      </div>
+                    <h1>{post.title}</h1>
+                  </HashLink>
+                  <p className="type">{post.type}</p>
+                </ul>
+                {currentUser && (
+                  <div className="edit-btns">
+                    <HashLink
+                      smooth
+                      to={`/edit-post/${post.id}/#edit-title`}
+                      className="btn edit"
+                      onClick={() => {
+                        handlePostClick(post);
+                      }}
+                    >
+                      Modifică
+                    </HashLink>
+                    <a
+                      className="btn delete"
+                      onClick={() => {
+                        deletePost(post.id);
+                      }}
+                    >
+                      Șterge
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="img-container">
+            <img className="posts-img" src={postsImg} alt="" />
+          </div>
+        </div>
+      )}
       <Pagination
         itemsCount={postsCount}
         pageSize={pageSize}

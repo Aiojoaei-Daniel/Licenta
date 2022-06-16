@@ -13,13 +13,16 @@ import {
   PostForm,
   StudentDataForm,
   StudentLogin,
+  About,
 } from "./containers";
 
 import "./App.css";
 
 function App() {
   const [post, setPost] = useState({});
-
+  const pathname = window.location.pathname
+    .slice(1)
+    .slice(0, window.location.pathname.length - 1);
   return (
     <BrowserRouter>
       <Switch>
@@ -42,13 +45,14 @@ function App() {
               component={EditPost}
               item={post}
             />
+            <Route path="/about" component={About} />
             <Route
               exact
               // path="/Posts"
               path="/"
               render={(props) => <Posts {...props} setPost={setPost} />}
             />
-            <Footer />
+            <Footer pathname={pathname} />
           </PostsProvider>
         </AuthProvider>
       </Switch>

@@ -1,0 +1,23 @@
+.not-found-img {
+  width: 30%;
+}
+
+.not-found-posts,
+.not-found {
+  max-height: 50rem;
+  margin-top: 6rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.not-found-posts h1,
+.not-found h1 {
+  max-height: 10rem;
+  align-self: center;
+}
+
+.line {
+  border-top: 5px solid var(--main-color);
+  border-radius: 5px;
+  max-width: 32%;
+}

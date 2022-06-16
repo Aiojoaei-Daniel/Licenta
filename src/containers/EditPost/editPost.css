@@ -3,6 +3,10 @@ form > .btn {
   color: var(--color-btns);
 }
 
+.edit-btn {
+  margin-left: 0;
+}
+
 .edit-btn:hover {
   background-color: green;
   color: var(--color-btns);
@@ -11,4 +15,26 @@ form > .btn {
 .cancel:hover {
   background-color: black;
   color: var(--color-btns);
+}
+
+.edit-post-page {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  margin: 5rem 0 5rem 0;
+  width: 100%;
+}
+
+.edit-post-page > img {
+  align-self: center;
+  /* width: clamp(100px, 90%, 600px); */
+  width: 40%;
+}
+
+.edit-post-form {
+  background-color: white;
+  margin: 2rem;
+  width: 50%;
+  border-radius: 5px;
+  border-top: 6px solid var(--main-color);
 }

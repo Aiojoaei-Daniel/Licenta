@@ -30,7 +30,7 @@ function PostsLogic(setPost, searchValue) {
 
   const getPagedPosts = () => {
     let filteredPosts = [];
-    const pageSize = 9;
+    const pageSize = 6;
 
     if (searchValue !== "") {
       filteredPosts = posts.filter((post) =>

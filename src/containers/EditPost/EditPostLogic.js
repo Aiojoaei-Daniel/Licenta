@@ -43,10 +43,10 @@ function EditPostLogic(post) {
 
         history.push("/");
       } else {
-        setError("Incorrect title or message");
+        setError("Titlu sau mesaj incorect.");
       }
     } catch (error) {
-      setError("Failed to update");
+      setError("Modificarea a eșuat.");
     }
   };
 

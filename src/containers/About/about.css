@@ -1,0 +1,39 @@
+article {
+  min-height: 30rem;
+  background-color: white;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+article > h1 {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.about-img1,
+.about-img2 {
+  max-height: 80%;
+  max-width: 80%;
+  margin-left: 3rem;
+}
+
+.about-img3 {
+  max-height: 80%;
+  max-width: 80%;
+  margin-left: 3rem;
+}
+
+.body > p {
+  max-height: 80%;
+  max-width: 80%;
+  padding-top: 5rem;
+  padding-left: 3rem;
+  font-size: large;
+}

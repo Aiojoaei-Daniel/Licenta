@@ -13,7 +13,7 @@
   --color-title: whitesmoke;
   --color-btns: whitesmoke;
   --bg-post: whitesmoke;
-  --bg-type-btn: whitesmoke;
+  --bg-type-btn: white;
   /* --main-color: blueviolet;
   --main-darkcolor: rgb(92, 0, 179); */
   --main-color: rgb(9, 178, 194);
@@ -29,6 +29,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: var(--main-color);
+}
+
+::selection {
+  color: white;
+  background: var(--main-color);
 }
 
 code {

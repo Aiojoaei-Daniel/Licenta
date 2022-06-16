@@ -20,7 +20,7 @@ function LoginLogic() {
       await login(emailRef.current.value, passwordRef.current.value);
       history.push("/");
     } catch {
-      setError("Failed to log in");
+      setError("Eroare conectare.");
     }
     setLoading(false);
   }

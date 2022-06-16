@@ -1,12 +1,13 @@
 import React from "react";
-import { Card, Alert } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 
 import InputGroupSelect from "../../components/InputGroupSelect";
 import EditPostLogic from "./EditPostLogic";
 import postsType from "./../../utils/postsType";
+import Alert from "../../components/Alert/Alert";
 
 import { usePosts } from "./../../contexts/PostsContext";
+import editImg from "../../images/editPost.png";
 
 import "./editPost.css";
 
@@ -27,11 +28,14 @@ function EditPost() {
   return !post ? (
     <></>
   ) : (
-    <Card>
-      <Card.Body>
-        <h2 className="text-center mb-4">Modifică Postare</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <form ref={form}>
+    <>
+      <h2 className="text-center mb-4" id="edit-title">
+        Modifică Postarea
+      </h2>
+      {error && <Alert error={error} />}
+      <div className="edit-post-page">
+        <img src={editImg} alt="" />
+        <form ref={form} className="edit-post-form">
           <div className="form-group">
             <label htmlFor="title">Titlul Postării</label>
             <input
@@ -74,8 +78,8 @@ function EditPost() {
             Anulează
           </Link>
         </form>
-      </Card.Body>
-    </Card>
+      </div>
+    </>
   );
 }
 

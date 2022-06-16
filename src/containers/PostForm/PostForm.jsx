@@ -1,11 +1,16 @@
 import React, { useState, useRef } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { Card, Alert } from "react-bootstrap";
+// import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 
 import { db } from "../../firebase-config";
 import InputGroupSelect from "./../../components/InputGroupSelect";
 import { getCurrentDateTime, postsType, SendNotification } from "./../../utils";
+import Alert from "../../components/Alert/Alert";
+
+import formImg from "../../images/forms/6.PNG";
+
+import "./postForm.css";
 
 function PostForm() {
   const postsCollectionRef = collection(db, "posts");
@@ -30,7 +35,7 @@ function PostForm() {
         newTitle.length > 2 &&
         newMessage.length > 5 &&
         type !== "" &&
-        type !== "Choose..."
+        type !== "Alege tipul postării..."
       ) {
         setError("");
 
@@ -46,10 +51,10 @@ function PostForm() {
 
         history.push("/");
       } else {
-        setError("Wrong title, message or type.");
+        setError("Titlul, mesajul sau tipul postării sunt incorecte.");
       }
     } catch (error) {
-      setError("Failed to post");
+      setError("Nu s-a reușit postarea anunțului.");
     }
   };
 
@@ -58,12 +63,12 @@ function PostForm() {
   };
 
   return (
-    <Card>
-      <Card.Body>
-        <h2 className="text-center mb-4">Creează o postare nouă</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <form ref={form}>
-          <div className="form-group">
+    <div className="new-post-page" id="new-post-page">
+      <h2 className="text-center mb-4">Creează o postare nouă</h2>
+      {error && <Alert error={error} />}
+      <div className="new-post-body">
+        <form ref={form} className="new-post-form">
+          <div className="form-group" id="form-group">
             <label htmlFor="title">Titlul postării</label>
             <input
               name="title"
@@ -98,16 +103,18 @@ function PostForm() {
           <button
             type="submit"
             onClick={createPost}
-            className="btn btn-primary"
+            id="submit-btn"
+            className="btn edit-btn"
           >
-            Creează postare
+            Creeaza o postare
           </button>
-          <Link to="/" className="btn btn-dark">
+          <Link to="/" className="btn cancel">
             Anulează
           </Link>
         </form>
-      </Card.Body>
-    </Card>
+        <img src={formImg} alt="formImg" />
+      </div>
+    </div>
   );
 }
 

@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 
-import { Card, Alert } from "react-bootstrap";
+// import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 
 import InputGroupSelect from "../../components/InputGroupSelect";
 import postsType from "../../utils/postsType";
+import Alert from "../../components/Alert/Alert";
 
 import { db } from "../../firebase-config";
 import { useAuth } from "./../../contexts/AuthContext";
+
+import imgRegister from "../../images/posts/imgPosts2.png";
+import "./studentRegister.css";
 
 function StudentDataForm() {
   const studentsCollectionRef = collection(db, "students");
@@ -29,66 +33,68 @@ function StudentDataForm() {
       group: studentGroup,
       specialization: studentSpecialization,
     };
+    console.log(students);
     students.map((student) => {
       if (student.email === studentEmail) {
         studentInDataBase = true;
-        setError("This email is already registered");
+        setError("Acest email a fost deja înregistrat.");
       }
     });
     if (
       // !currentUser &&
       !studentInDataBase &&
       studentData.specialization !== undefined &&
-      studentData.specialization !== "Choose..." &&
-      studentData.group !== "Choose..." &&
+      studentData.specialization !== "Alege tipul postării..." &&
+      studentData.group !== "Alege tipul postării..." &&
       studentData.group !== undefined
     ) {
       await addDoc(studentsCollectionRef, studentData);
       history.push("/");
-    } else if (!studentInDataBase) setError("Already connected or wrong data.");
+    } else if (!studentInDataBase) setError("Date incomplete sau greșite.");
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Card style={{ maxWidth: "2000px" }}>
-        <Card.Body>
-          <h2 className="text-center mb-4">Date despre student</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <form>
-            <div className="form-group">
-              <label htmlFor="title">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                onChange={(event) => setStudentEmail(event.target.value)}
-                required
-              />
-            </div>
+    <>
+      <h2 className="title" id="student-form">
+        Date despre student
+      </h2>
+      {error && <Alert error={error} />}
+      <div className="register-body">
+        <form className="student-form">
+          <div className="form-group">
+            <label htmlFor="title">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              onChange={(event) => setStudentEmail(event.target.value)}
+              required
+            />
+          </div>
 
-            <InputGroupSelect
-              values={groups}
-              onChange={(event) => setStudentGroup(event.target.value)}
-              label="Grupă"
-            />
-            <InputGroupSelect
-              values={specializations}
-              onChange={(event) => setStudentSpecialization(event.target.value)}
-              label="Specializare"
-            />
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={registerStudent}
-            >
-              Înregistrează student
-            </button>
-            <Link to="/" className="btn btn-dark">
-              Anulează
-            </Link>
-          </form>
-        </Card.Body>
-      </Card>
-    </div>
+          <InputGroupSelect
+            values={groups}
+            onChange={(event) => setStudentGroup(event.target.value)}
+            label="Grupă"
+          />
+          <InputGroupSelect
+            values={specializations}
+            onChange={(event) => setStudentSpecialization(event.target.value)}
+            label="Specializare"
+          />
+          <button
+            type="submit"
+            className="btn register-btn"
+            onClick={registerStudent}
+          >
+            Înregistrează student
+          </button>
+          <Link to="/" className="btn cancel">
+            Anulează
+          </Link>
+        </form>
+        <img src={imgRegister} className="register-img" alt="" />
+      </div>
+    </>
   );
 }
 

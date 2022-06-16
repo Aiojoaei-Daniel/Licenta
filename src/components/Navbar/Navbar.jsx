@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import { useAuth } from "./../../contexts/AuthContext";
 import LogoutLogic from "./../../containers/Login/LogoutLogic";
@@ -10,16 +11,22 @@ function Navbar() {
   const { currentUser, setCurrentStudent } = useAuth();
   const { handleLogout } = LogoutLogic(setCurrentStudent);
   return (
-    <nav className="navbar gradient__bg">
+    <nav className="navbar gradient__bg" id="navbar">
       <div className="navbar-btns">
         <Link to="/" className="navbar-btn">
           Acasă
         </Link>
+        <HashLink smooth to="/#posts-section" className="navbar-btn">
+          Postari
+        </HashLink>
         {currentUser && (
-          <Link to="/new-post" className="navbar-btn">
+          <HashLink smooth to="/new-post/#new-post-page" className="navbar-btn">
             Postare Nouă
-          </Link>
+          </HashLink>
         )}
+        <HashLink to="/about/#about-section" className="navbar-btn">
+          Despre noi
+        </HashLink>
         {/* {!currentUser && (
           <Link to="/login" className="navbar-btn" style={{ color: "white" }}>
           Autentificare
@@ -30,12 +37,11 @@ function Navbar() {
             Deconectare
             </a>
           )} */}
-        <div>{/* <img src="" alt="" /> */}</div>
       </div>
       {!currentUser && (
-        <Link to="/login" className="navbar-btn">
+        <HashLink smooth to="/login/#login-page" className="navbar-btn">
           Autentificare
-        </Link>
+        </HashLink>
       )}
       {currentUser && (
         <a href="#" onClick={handleLogout} className="navbar-btn">

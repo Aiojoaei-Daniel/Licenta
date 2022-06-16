@@ -78,7 +78,7 @@
 }
 
 .navbar {
-  height: clamp(50px, 600px, 1000px);
+  height: clamp(50px, 800px, 1000px);
   display: flex;
   align-items: flex-start;
   /* background: url("../../images/reshot-illustration-education-items-4T8PQJV9FN.png")
@@ -89,6 +89,7 @@
   /* background-size: 1600px 400px; */
   /* background-repeat: no-repeat; */
   box-shadow: none;
+  /* margin-top: 5rem; */
 }
 
 .navbar-btns,

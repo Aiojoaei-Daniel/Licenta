@@ -27,21 +27,32 @@
 .posts-section {
   width: 95%;
   align-self: center;
+  margin-bottom: 3rem;
+}
+
+.posts-body {
+  display: flex;
+  margin-top: 4rem;
+  width: 100%;
 }
 
 .grid-posts {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   margin-bottom: 1.5rem;
+  width: 60%;
+  grid-auto-rows: max-content;
 }
 
 .post {
   border-radius: 5px;
-  background: var(--bg-post);
+  background: white;
   box-shadow: 1px 1px 5px 1px var(--color-shadow);
   color: var(--color-btns);
   border-bottom: 10px solid var(--main-color);
+  width: 100%;
+  height: auto;
 }
 
 .post:hover {
@@ -117,4 +128,18 @@
 
 .date {
   align-self: flex-end;
+}
+.posts-img {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  /* height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto; */
+}
+
+.img-container {
+  width: 40%;
+  margin-left: 5rem;
 }
