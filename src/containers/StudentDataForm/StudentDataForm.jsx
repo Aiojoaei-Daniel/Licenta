@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-// import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
+import { Form } from "react-bootstrap";
+
+import { db } from "../../firebase-config";
+import { useAuth } from "./../../contexts/AuthContext";
 
 import InputGroupSelect from "../../components/InputGroupSelect";
 import postsType from "../../utils/postsType";
 import Alert from "../../components/Alert/Alert";
-
-import { db } from "../../firebase-config";
-import { useAuth } from "./../../contexts/AuthContext";
 
 import imgRegister from "../../images/posts/imgPosts2.png";
 import "./studentRegister.css";
@@ -41,7 +41,7 @@ function StudentDataForm() {
       }
     });
     if (
-      // !currentUser &&
+      studentEmail.length > 5 &&
       !studentInDataBase &&
       studentData.specialization !== undefined &&
       studentData.specialization !== "Alege tipul postării..." &&
@@ -61,15 +61,24 @@ function StudentDataForm() {
       {error && <Alert error={error} />}
       <div className="register-body">
         <form className="student-form">
-          <div className="form-group">
-            <label htmlFor="title">Email</label>
-            <input
+          <label htmlFor="email">Email</label>
+          <input
+            required
+            type="email"
+            className="form-control"
+            onChange={(event) => setStudentEmail(event.target.value)}
+          />
+          {/* <Form className="login-form"> */}
+          {/* <Form.Group id="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
               type="email"
               className="form-control"
               onChange={(event) => setStudentEmail(event.target.value)}
               required
             />
-          </div>
+          </Form.Group> */}
+          {/* </Form> */}
 
           <InputGroupSelect
             values={groups}

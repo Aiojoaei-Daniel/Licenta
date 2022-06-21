@@ -86,12 +86,19 @@
 
 .college-data {
   display: flex;
-  align-items: center;
-  /* margin: 1rem; */
+  flex-direction: column;
+  justify-content: center;
   width: 20%;
 }
-.college-data > p {
-  margin-left: auto;
+.college-data > a {
+  color: white;
+  align-self: center;
+  font-weight: 400;
+  /* font-size: large; */
+}
+
+.college-data > a:hover {
+  color: black;
 }
 
 .up-button,

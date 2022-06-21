@@ -18,7 +18,12 @@ export default function Footer() {
         </HashLink>
       </div>
       <div className="college-data">
-        <p>Date despre facultate</p>
+        <a href="https://www.tuiasi.ro/" target="_blank">
+          Universitatea Tehnică "Gheorghe Asachi".
+        </a>
+        <a href="https://goo.gl/maps/ZLDsAoRpcZ95m2bn9" target="_blank">
+          Apasă aici pentru a afla locația.
+        </a>
       </div>
     </footer>
   );
