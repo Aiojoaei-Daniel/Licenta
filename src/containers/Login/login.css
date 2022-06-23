@@ -28,6 +28,8 @@
 
 .login-btn {
   margin: 1.5rem 0;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .login-btn:hover {
@@ -44,4 +46,25 @@
   margin: 0rem;
   width: 30%;
   height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  #img-container {
+    display: none;
+  }
+
+  .login-form {
+    width: 70%;
+    margin-top: 2rem;
+  }
+  .login-page-title {
+    font-size: 1.7rem;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login-page-title {
+    font-size: 1.1rem;
+  }
 }

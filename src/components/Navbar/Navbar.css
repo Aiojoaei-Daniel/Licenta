@@ -1,124 +1,39 @@
-.gradient__bg1 {
-  background: -moz-linear-gradient(
-    90deg,
-    rgb(3, 181, 166) 0%,
-    rgba(15, 40, 104, 1) 100%
-  );
-
-  /* safari 5.1+,chrome 10+ */
-  background: -webkit-linear-gradient(
-    90deg,
-    rgb(8, 193, 178) 0%,
-    rgba(15, 40, 104, 1) 100%
-  );
-
-  /* opera 11.10+ */
-  background: -o-linear-gradient(
-    90deg,
-    rgb(8, 188, 173) 0%,
-    rgba(15, 40, 104, 1) 100%
-  );
-
-  /* ie 6-9 */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0F2868', endColorstr='#09E1D0', GradientType=0 );
-
-  /* ie 10+ */
-  background: -ms-linear-gradient(
-    90deg,
-    rgb(9, 189, 174) 0%,
-    rgba(15, 40, 104, 1) 100%
-  );
-
-  /* global 94%+ browsers support */
-  background: linear-gradient(
-    90deg,
-    rgb(10, 193, 178) 0%,
-    rgba(15, 40, 104, 1) 100%
-  );
-}
-
-.gradient__bg2 {
-  /* ff 3.6+ */
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(94, 49, 175, 1) 0%,
-    rgba(186, 1, 218, 1) 100%
-  );
-
-  /* safari 5.1+,chrome 10+ */
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(94, 49, 175, 1) 0%,
-    rgba(186, 1, 218, 1) 100%
-  );
-
-  /* opera 11.10+ */
-  background: -o-linear-gradient(
-    90deg,
-    rgba(94, 49, 175, 1) 0%,
-    rgba(186, 1, 218, 1) 100%
-  );
-
-  /* ie 6-9 */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#BA01DA', endColorstr='#5E31AF', GradientType=0 );
-
-  /* ie 10+ */
-  background: -ms-linear-gradient(
-    90deg,
-    rgba(94, 49, 175, 1) 0%,
-    rgba(186, 1, 218, 1) 100%
-  );
-
-  /* global 94%+ browsers support */
-  background: linear-gradient(
-    90deg,
-    rgba(94, 49, 175, 1) 0%,
-    rgba(186, 1, 218, 1) 100%
-  );
-}
-
 .navbar {
   height: clamp(50px, 800px, 1000px);
   display: flex;
   align-items: flex-start;
-  /* background: url("../../images/reshot-illustration-education-items-4T8PQJV9FN.png")
-    no-repeat top;
-  background-size: cover; */
   background: url("../../images/navbar/5514.jpg") no-repeat center;
   background-size: cover;
-  /* background-size: 1600px 400px; */
-  /* background-repeat: no-repeat; */
   box-shadow: none;
-  /* margin-top: 5rem; */
+  width: 100%;
 }
 
-.navbar-btns,
-.navbar > a {
+.hamburger-menu {
+  width: 100%;
+}
+
+.navbar-btns {
   display: flex;
   margin: 2rem 1rem;
+  width: 100%;
 }
 
 .navbar-btn {
   color: var(--color-text);
-  /* box-shadow: 1p; */
   font-weight: bold;
   font-size: large;
   font-family: var(--font-family);
   margin: 0 2rem;
-  /* border: 3px solid black; */
   border-radius: 5px;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .navbar-btn:hover {
   color: var(--color-text);
 }
 
-.navbar-btns {
-  width: 100%;
-}
 .navbar-btns > a {
   font-size: 1.1rem;
 }
@@ -129,21 +44,17 @@
 }
 
 .hamburger-menu {
-  width: 3rem;
-  height: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 1.5rem 1rem;
+  margin: 1.5rem 0;
+  /* min-height: 5rem; */
 }
-.hamburger-menu > div {
-  width: 100%;
-  height: 0.5rem;
+.hamburger {
+  width: 3.5rem;
+  height: 0.6rem;
   border-radius: 5px;
+  margin: 0.2rem;
   background-color: rgb(102, 102, 102);
-}
-
-.hamburger-menu {
   display: none;
 }
 
@@ -153,15 +64,44 @@
   }
 }
 @media only screen and (max-width: 750px) {
-  .hamburger-menu {
+  .hamburger {
     display: flex;
     cursor: pointer;
   }
   .navbar-btns {
+    margin: 1rem 0;
     flex-direction: column;
-    /* margin-left: 5rem; */
-    max-width: 10rem;
+    width: 100%;
+    max-height: 20rem;
   }
+
+  .navbar-btns > a {
+    padding: 1rem 0;
+    margin: 0;
+    min-height: 3rem;
+    font-size: 1rem;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburger-menu:hover {
+    min-width: 95%;
+    min-height: 50%;
+    box-shadow: 1px 1px 10px 1px var(--color-shadow);
+    border-radius: 5px;
+  }
+
+  .hamburger-menu:hover .navbar-btns > a {
+    display: flex;
+  }
+
+  .navbar-btns > a:hover {
+    background-color: rgb(246, 246, 246);
+    /* opacity: 0.5; */
+  }
+
   .login,
   .logout {
     margin: 0 32px;

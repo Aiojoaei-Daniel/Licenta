@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
@@ -10,39 +10,34 @@ import "./navbar.css";
 function Navbar() {
   const { currentUser, setCurrentStudent } = useAuth();
   const { handleLogout } = LogoutLogic(setCurrentStudent);
-  const [showNavBtns, setShowNavBtns] = useState("none");
-
-  const handleClickOnMenuBtn = (style) => {
-    showNavBtns === "none" ? setShowNavBtns("flex") : setShowNavBtns("none");
-    console.log(style);
-  };
 
   return (
-    <nav className="navbar gradient__bg" id="navbar">
-      <div
-        className="hamburger-menu"
-        onClick={() => handleClickOnMenuBtn("hamburger-menu")}
-      >
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div className="navbar-btns" style={{ display: showNavBtns }}>
-        <Link to="/" className="navbar-btn">
-          Acasă
-        </Link>
-        <HashLink smooth to="/#posts-section" className="navbar-btn">
-          Postari
-        </HashLink>
-        {currentUser && (
-          <HashLink smooth to="/new-post/#new-post-page" className="navbar-btn">
-            Postare Nouă
+    <nav className="navbar" id="navbar">
+      <div className="hamburger-menu">
+        <div className="hamburger"></div>
+        <div className="hamburger"></div>
+        <div className="hamburger"></div>
+
+        <div className="navbar-btns">
+          <Link to="/" className="navbar-btn">
+            Acasă
+          </Link>
+          <HashLink smooth to="/#posts-section" className="navbar-btn">
+            Postari
           </HashLink>
-        )}
-        <HashLink to="/about/#about-section" className="navbar-btn">
-          Despre noi
-        </HashLink>
-        {/* {!currentUser && (
+          {currentUser && (
+            <HashLink
+              smooth
+              to="/new-post/#new-post-page"
+              className="navbar-btn"
+            >
+              Postare Nouă
+            </HashLink>
+          )}
+          <HashLink to="/about/#about-section" className="navbar-btn">
+            Despre noi
+          </HashLink>
+          {/* {!currentUser && (
           <Link to="/login" className="navbar-btn" style={{ color: "white" }}>
           Autentificare
           </Link>
@@ -52,16 +47,26 @@ function Navbar() {
             Deconectare
             </a>
           )} */}
-        {!currentUser && (
-          <HashLink smooth to="/login/#login-page" className="navbar-btn login">
-            Autentificare
-          </HashLink>
-        )}
-        {currentUser && (
-          <a href="#" onClick={handleLogout} className="navbar-btn logout">
-            Deconectare
-          </a>
-        )}
+          {!currentUser && (
+            <HashLink
+              smooth
+              to="/login/#login-page"
+              className="navbar-btn login"
+            >
+              Autentificare
+            </HashLink>
+          )}
+          {currentUser && (
+            <a
+              href="#"
+              onClick={handleLogout}
+              className="navbar-btn logout"
+              style={{ marginLeft: "auto" }}
+            >
+              Deconectare
+            </a>
+          )}
+        </div>
       </div>
     </nav>
   );

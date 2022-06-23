@@ -32,15 +32,27 @@ function PostsLogic(setPost, searchValue) {
     let filteredPosts = [];
     const pageSize = 6;
 
-    if (searchValue !== "") {
-      filteredPosts = posts.filter((post) =>
-        post.title.toLowerCase().startsWith(searchValue.toLowerCase())
-      );
-    } else {
-      filteredPosts = posts.filter(
-        (post) => post.type == selectedType || selectedType === "Toate"
-      );
-    }
+    // let filteredPosts = [...posts];
+    // console.log(filteredPosts);
+    // filteredPosts.filter(
+    //   (post) =>
+    //     // post.title.toLowerCase().startsWith(searchValue.toLowerCase()) ||
+    //     post.type === selectedType || selectedType === "Toate"
+    // );
+    // console.log(filteredPosts);
+
+    // if (searchValue !== "") {
+    filteredPosts = posts.filter(
+      (post) =>
+        (post.title.toLowerCase().startsWith(searchValue.toLowerCase()) &&
+          post.type == selectedType) ||
+        selectedType === "Toate"
+    );
+    // } else {
+    // filteredPosts = posts.filter(
+    //   (post) => post.type == selectedType || selectedType === "Toate"
+    // );
+    // }
 
     const postsCount = filteredPosts.length;
     const sorted = _.orderBy(filteredPosts, ["date", "time"], ["desc", "desc"]);

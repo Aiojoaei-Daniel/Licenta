@@ -12,17 +12,52 @@ export default function Footer() {
         <img src={upIcon} alt="" />
       </a>
       <div className="body-footer">
-        <p>Fii mereu la curent cu postările care te interesează!</p>
-        <HashLink smooth to="/student-register/#student-form">
+        <p className="big-size-text">
+          Fii mereu la curent cu postările care te interesează!
+        </p>
+        <HashLink
+          smooth
+          to="/student-register/#student-form"
+          className="big-size-text"
+        >
           Apasă aici pentru înregistrare!
+        </HashLink>
+        <HashLink
+          smooth
+          to="/student-register/#student-form"
+          className="small-screen-text"
+        >
+          Înregistrare-te aici.
         </HashLink>
       </div>
       <div className="college-data">
-        <a href="https://www.tuiasi.ro/" target="_blank">
+        <a
+          className="big-size-text"
+          href="https://www.tuiasi.ro/"
+          target="_blank"
+        >
           Universitatea Tehnică "Gheorghe Asachi".
         </a>
-        <a href="https://goo.gl/maps/ZLDsAoRpcZ95m2bn9" target="_blank">
+        <a
+          className="big-size-text"
+          href="https://goo.gl/maps/ZLDsAoRpcZ95m2bn9"
+          target="_blank"
+        >
           Apasă aici pentru a afla locația.
+        </a>
+        <a
+          className="small-screen-text"
+          href="https://www.tuiasi.ro/"
+          target="_blank"
+        >
+          Pagina universității.
+        </a>
+        <a
+          className="small-screen-text"
+          href="https://goo.gl/maps/ZLDsAoRpcZ95m2bn9"
+          target="_blank"
+        >
+          Locația universității
         </a>
       </div>
     </footer>

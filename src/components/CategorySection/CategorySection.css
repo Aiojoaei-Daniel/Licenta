@@ -9,16 +9,13 @@
   background-color: var(--bg-type-btn);
   border-radius: 5px;
   margin-left: 1rem;
+  list-style: none;
 }
 
 .list-group > ul > li > a {
   color: var(--color-text);
   font-size: 1.2rem;
   padding: 5px;
-}
-
-.list-group > ul > li {
-  list-style: none;
 }
 
 .dropdown_menu {
@@ -108,4 +105,10 @@
   border-radius: 5px;
   background-color: var(--main-color);
   outline: 1px solid var(--main-color);
+}
+
+@media screen and (max-width: 400px) {
+  .list-group > ul > li {
+    margin: 0;
+  }
 }

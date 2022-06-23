@@ -72,7 +72,6 @@ function Posts({ setPost }) {
                       smooth
                       to={`/edit-post/${post.id}/#edit-title`}
                       className="post-edit-btn"
-                      id="post-edit-btn"
                       onClick={() => {
                         handlePostClick(post);
                       }}
@@ -81,7 +80,6 @@ function Posts({ setPost }) {
                     </HashLink>
                     <a
                       className="post-delete-btn"
-                      id="post-delete-btn"
                       onClick={() => {
                         deletePost(post.id);
                       }}

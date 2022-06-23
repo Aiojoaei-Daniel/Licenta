@@ -12,7 +12,7 @@ const CategorySection = ({ setSelectedType }) => {
       <div className="list-group">
         <ul>
           <li key="key1">
-            <a href="#" key="key1">
+            <a key="key1">
               Tipuri <i className="fas fa-caret-down"></i>
             </a>
             <div className="dropdown_menu">

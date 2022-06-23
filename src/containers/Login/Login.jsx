@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
 import LoginLogic from "./LoginLogic";
@@ -30,6 +30,9 @@ const Login = () => {
             <button className="btn login-btn" type="submit" disabled={loading}>
               Conectare
             </button>
+            <Link to="/" className="btn cancel">
+              Anulează
+            </Link>
           </Form>
           <div id="img-container">
             <img id="login-img" src={loginImg} alt="" />
