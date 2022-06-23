@@ -31,6 +31,10 @@
   margin-bottom: 3rem;
 }
 
+.type-btn {
+  display: flex;
+}
+
 .posts-body {
   display: flex;
   margin-top: 4rem;
@@ -52,7 +56,8 @@
   box-shadow: 1px 1px 5px 1px var(--color-shadow);
   color: var(--color-btns);
   border-bottom: 10px solid var(--main-color);
-  width: 100%;
+  /* width: 100%; */
+  max-width: 100rem;
   height: auto;
 }
 
@@ -61,19 +66,19 @@
 }
 
 .post > div {
-  width: 100%;
+  max-width: 100%;
 }
 
 .post > p {
   width: 100%;
 }
-
 .post > ul > a {
   display: flex;
   justify-content: center;
   cursor: pointer;
   width: 100%;
 }
+
 .post > ul > a > h1 {
   text-align: center;
   text-overflow: ellipsis;
@@ -95,35 +100,7 @@
 }
 .post > ul > div {
   display: flex;
-  justify-content: space-between;
-}
-
-.type-btn {
-  display: flex;
-}
-
-.edit-btns {
-  display: flex;
-  /* justify-content: flex-end; */
-}
-
-.edit-btns > a {
-  /* max-width: 100%; */
-  background-color: var(--main-color);
-}
-
-.edit,
-.delete {
-  max-height: 3rem;
-  width: 50%;
-}
-.delete:hover {
-  background-color: red;
-  color: var(--color-btns);
-}
-.edit:hover {
-  background-color: var(--main-darkcolor);
-  color: var(--color-btns);
+  /* justify-content: space-between; */
 }
 
 .type {
@@ -140,6 +117,42 @@
 .date {
   align-self: flex-end;
 }
+
+.post-edit-btns > a {
+  max-width: 50%;
+}
+
+.post-edit-btns {
+  display: flex;
+  /* justify-content: flex-end; */
+}
+
+.post-edit-btns > a {
+  /* max-width: 100%; */
+  background-color: var(--main-color);
+}
+
+.post-edit-btn,
+.post-delete-btn {
+  max-height: 5rem;
+  border-radius: 5px;
+  width: 50%;
+  background-color: var(--main-color);
+  color: white;
+  padding: 1rem;
+  margin: 0.5rem;
+  text-align: center;
+}
+.post-edit-btn:hover {
+  background-color: var(--main-darkcolor);
+  color: var(--color-btns);
+}
+
+.post-delete-btn:hover {
+  background-color: red;
+  color: var(--color-btns);
+}
+
 .posts-img {
   width: 100%;
   height: auto;
@@ -188,7 +201,7 @@
   }
   .form-inline {
     grid-row: 2;
-    width: 90%;
+    width: 40%;
     place-content: center;
     margin: 0;
   }
@@ -205,6 +218,16 @@
   .grid-posts {
     width: 100%;
   }
-  .post {
+  .post-edit-btns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #post-edit-btn,
+  #post-delete-btn {
+    margin: 0;
+    width: 50%;
+    /* margin: 0 0 0.5rem 0.5rem; */
+    background-color: red;
   }
 }

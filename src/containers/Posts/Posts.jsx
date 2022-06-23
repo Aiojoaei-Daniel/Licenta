@@ -54,7 +54,6 @@ function Posts({ setPost }) {
                   <div>
                     <p className="time">{post.time}</p>
                     <p className="date">{post.date}</p>{" "}
-                    {/*sa inversez string ul */}
                   </div>
                   <HashLink
                     smooth
@@ -68,11 +67,12 @@ function Posts({ setPost }) {
                   <p className="type">{post.type}</p>
                 </ul>
                 {currentUser && (
-                  <div className="edit-btns">
+                  <div className="post-edit-btns">
                     <HashLink
                       smooth
                       to={`/edit-post/${post.id}/#edit-title`}
-                      className="btn edit"
+                      className="post-edit-btn"
+                      id="post-edit-btn"
                       onClick={() => {
                         handlePostClick(post);
                       }}
@@ -80,7 +80,8 @@ function Posts({ setPost }) {
                       Modifică
                     </HashLink>
                     <a
-                      className="btn delete"
+                      className="post-delete-btn"
+                      id="post-delete-btn"
                       onClick={() => {
                         deletePost(post.id);
                       }}
