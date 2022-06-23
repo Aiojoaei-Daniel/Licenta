@@ -1,5 +1,5 @@
 .not-found-img {
-  width: 30%;
+  width: 40%;
 }
 
 .not-found-posts,
@@ -10,10 +10,11 @@
   justify-content: space-around;
 }
 
-.not-found-posts h1,
-.not-found h1 {
+.not-found-posts > h1,
+.not-found > h1 {
   max-height: 10rem;
   align-self: center;
+  font-size: 5vw;
 }
 
 .line {

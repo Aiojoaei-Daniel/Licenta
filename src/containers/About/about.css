@@ -33,7 +33,53 @@ article > h1 {
 .body > p {
   max-height: 80%;
   max-width: 80%;
-  padding-top: 5rem;
+  margin-bottom: 5rem;
   padding-left: 3rem;
   font-size: large;
+  align-self: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .body > p {
+    font-size: 0.8rem;
+  }
+  article > h1 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .body {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  article > h1 {
+    margin-bottom: 10px;
+  }
+  .about-img1,
+  .about-img2,
+  .about-img3,
+  .body > p {
+    margin: 0;
+    padding: 10px;
+  }
+  .about-img1 {
+    order: 1;
+  }
+  .text1 {
+    order: 2;
+  }
+  .about-img2 {
+    order: 3;
+  }
+  .text2 {
+    order: 4;
+  }
+  .about-img3 {
+    order: 5;
+  }
+  .text3 {
+    order: 6;
+  }
 }

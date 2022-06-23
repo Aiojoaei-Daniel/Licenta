@@ -2,13 +2,12 @@
   display: flex;
   min-height: 30rem;
   margin: 5rem 0;
+  justify-content: center;
 }
 
 .student-form {
   border-top: 6px solid var(--main-color);
-  /* width: clamp(30rem, 70%, 40rem); */
   width: 40%;
-  margin: 2rem 5rem;
   border-radius: 5px;
 }
 
@@ -16,8 +15,10 @@
   margin-top: 1rem;
 }
 
-.register-btn {
+.register-btn,
+.cancel {
   margin-left: 0;
+  width: 100%;
 }
 
 .register-btn:hover {
@@ -39,5 +40,20 @@
 .register-img {
   width: 40%;
   height: 80%;
-  /* margin-left: 2rem; */
+  margin-left: 4rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .register-img {
+    display: none;
+  }
+  .student-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .title {
+    font-size: 1.4rem;
+  }
 }

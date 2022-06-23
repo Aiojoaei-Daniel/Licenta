@@ -13,7 +13,7 @@
 
 .new-post-form {
   background-color: white;
-  margin: 2rem 2rem 2rem 4rem;
+  margin: 2rem 2rem 2rem 2rem;
   width: 40%;
   height: auto;
   border-radius: 5px;
@@ -25,4 +25,26 @@
   /* width: clamp(100px, 90%, 600px); */
   width: 50%;
   height: auto;
+}
+
+.edit-btn,
+.cancel-btn {
+  width: 100%;
+  margin: 6px 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .new-post-body > img {
+    display: none;
+  }
+
+  .new-post-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .new-post-page > h2 {
+    font-size: 1.5rem;
+  }
 }

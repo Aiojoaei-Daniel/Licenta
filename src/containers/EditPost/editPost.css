@@ -38,3 +38,17 @@ form > .btn {
   border-radius: 5px;
   border-top: 6px solid var(--main-color);
 }
+
+@media screen and (max-width: 850px) {
+  .edit-post-page > img {
+    display: none;
+  }
+  .edit-post-form {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .text-center {
+    font-size: 1.4rem;
+  }
+}

@@ -33,9 +33,9 @@ function Posts({ setPost }) {
         <div className="header-title" id="header-title">
           <p>Noutăți despre Facultate</p>
         </div>
-        <form className="form-inline my-2 my-lg-0">
+        <form className="form-inline">
           <input
-            className="form-control mr-sm-2"
+            className="form-control"
             type="search"
             placeholder="Caută o postare"
             aria-label="Search"

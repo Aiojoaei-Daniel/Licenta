@@ -108,7 +108,7 @@ function PostForm() {
           >
             Creeaza o postare
           </button>
-          <Link to="/" className="btn cancel">
+          <Link to="/" className="btn cancel-btn">
             Anulează
           </Link>
         </form>

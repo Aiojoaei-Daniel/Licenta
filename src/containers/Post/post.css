@@ -12,10 +12,6 @@
   display: flex;
 }
 
-.post-time {
-  margin-left: auto;
-}
-
 .post-body {
   width: 100%;
   display: flex;
@@ -25,9 +21,13 @@
 .post-time,
 .post-date,
 .post-type {
-  padding: 1.5rem;
   font-size: large;
   border-bottom: 2px solid var(--main-color);
+  max-width: 6rem;
+  margin: 20px;
+}
+.post-time {
+  margin-left: auto;
 }
 
 .post-page > h1 {
@@ -41,7 +41,6 @@
   width: 70%;
   height: 20rem;
   word-wrap: break-word;
-  /* font-family: "Courier"; */
   overflow-y: auto;
   padding-right: 0.5rem;
 }
@@ -86,4 +85,29 @@
   height: 30%;
   margin-right: 2rem;
   align-self: center;
+}
+
+@media screen and (max-width: 850px) {
+  .post-body > img {
+    display: none;
+  }
+  .post-body > p {
+    width: 100%;
+    margin: 1rem;
+  }
+  .post-header {
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: column; */
+  }
+  .post-time,
+  .post-date,
+  .post-type {
+    font-size: large;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .post-page > h1 {
+    margin-top: 2rem;
+  }
 }
