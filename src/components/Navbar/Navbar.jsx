@@ -53,7 +53,7 @@ function Navbar() {
               to="/login/#login-page"
               className="navbar-btn login"
             >
-              Autentificare
+              Conectare Admin
             </HashLink>
           )}
           {currentUser && (

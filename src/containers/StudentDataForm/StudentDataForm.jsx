@@ -67,7 +67,7 @@ function StudentDataForm() {
   return (
     <>
       <h2 className="title" id="student-form">
-        Date despre student
+        Informații despre student
       </h2>
       {error && <Alert error={error} />}
       <div className="register-body">
@@ -77,40 +77,28 @@ function StudentDataForm() {
             required
             type="email"
             className="form-control"
+            placeholder="Email student..."
             onChange={(event) => setStudentEmail(event.target.value)}
           />
-          {/* <Form className="login-form"> */}
-          {/* <Form.Group id="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              className="form-control"
-              onChange={(event) => setStudentEmail(event.target.value)}
-              required
-            />
-          </Form.Group> */}
-          {/* </Form> */}
-
           <InputGroupSelect
             values={groups}
             onChange={(event) => setStudentGroup(event.target.value)}
             label="Grupă"
+            defaultValue="grupa"
           />
           <InputGroupSelect
             values={specializations}
             onChange={(event) => setStudentSpecialization(event.target.value)}
             label="Specializare"
+            defaultValue="specializarea"
           />
           <button
             type="submit"
             className="btn register-btn"
             onClick={registerStudent}
           >
-            Înregistrează student
+            Abonează-te
           </button>
-          <Link to="/" className="btn cancel">
-            Anulează
-          </Link>
         </form>
         <img src={imgRegister} className="register-img" alt="" />
       </div>

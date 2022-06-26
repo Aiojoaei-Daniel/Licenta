@@ -10,6 +10,7 @@
 
 .hamburger-menu {
   width: 100%;
+  backdrop-filter: blur(10px);
 }
 
 .navbar-btns {
@@ -90,7 +91,7 @@
     min-width: 95%;
     min-height: 50%;
     box-shadow: 1px 1px 10px 1px var(--color-shadow);
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .hamburger-menu:hover .navbar-btns > a {

@@ -9,34 +9,34 @@ import "./about.css";
 export default function About() {
   return (
     <article id="about-section">
-      <h1 id="title">Cum funtioneaza?</h1>
+      <h1 id="title">Despre noi</h1>
       <div className="body">
         <img src={about1} alt="img" className="about-img1" />
         <p className="text1">
-          Aceasta idee a luat nastere de la nevoia de a cumula toate anunturile
-          de la foarte importante la mai putin importante intr-un singur loc.{" "}
-          Postari pot avea ca grup tinta toti studentii facultatii, studentii
-          unei specializari sau poate doar o anumita grupa, si pot fi sortate in
-          functie de aceste criterii.
+          Această idee a luat naștere din nevoia de a cumula toate anunțurile de
+          la foarte importante la mai puțin importante într-un singur loc.{" "}
+          Postările pot avea ca grup țintă toți studenții universității,
+          studenții unei specializări sau poate doar o anumită grupă, și pot fi
+          organizate in funcție de aceste criterii.
         </p>
         <p className="text2">
-          Cadrele universitatii se conecteaza cu niste conturi speciale si pot
-          creea postari pentru un anumit grup tinta. Daca in postare sunt
-          greseli sau s-a gresit grupul tinta, aceasta se poate edita sau chiar
-          sterge.
+          Cadrele universitare se conectează cu anumite conturi speciale și pot
+          creea postări pentru un anumit grup țintă. Dacă în postare sunt
+          greșeli sau s-a greșit grupul țintă, aceasta se poate edita sau chiar
+          șterge.
         </p>
         <img className="about-img2" src={about2} alt="img" />
         <img className="about-img3" src={about3} alt="img" />
         <p className="text3">
-          Studentii urmeaza sa aiba o viata mai usoara cu aceasta aplicatie,
-          putand vedea anunturile in timp real si sortandu-le pentru a citi doar
-          ce ii intereseaza. Nu mai e nevoie sa fii in 10 grupuri de facebook
-          sau sa urmaresti n tipuri de aplicatii si email-uri pentru a fi la
-          curent cu noutatile. Niciun profesor nu va fi impotriva acestei
-          aplicatii pentru ca este foarte usor de utilizat. De asemenea
-          studentii au posibilitatea de a se inregistra pentru a fi notificati
-          pe email cand se posteaza ceva pentru toti studentii, specializarea
-          sau grupa lor.
+          Studenții urmează să aibă o viață mai ușoară cu această aplicație,
+          putând vedea anunțurile în timp real și sortându-le pentru a citi doar
+          ce ii interesează. Nu mai este nevoie să fii în nenumărate grupuri pe
+          facebook sau să urmărești toate tipurile de aplicații și email-uri
+          pentru a fi la curent cu noutățile. Niciun profesor nu va fi împotriva
+          acestei aplicații pentru că este foarte ușor de utilizat. De asemenea
+          studenții au posibilitatea de a se abona pentru a fi notificați pe
+          email când se postează ceva ce ține de universitate, specializarea sau
+          grupa din care fac parte.
         </p>
       </div>
     </article>

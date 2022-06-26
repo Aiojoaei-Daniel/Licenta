@@ -33,6 +33,10 @@
   margin: 6px 0;
 }
 
+.cancel-btn:hover {
+  color: white;
+}
+
 @media only screen and (max-width: 900px) {
   .new-post-body > img {
     display: none;

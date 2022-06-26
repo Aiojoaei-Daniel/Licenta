@@ -1,6 +1,13 @@
 import React from "react";
 
-function InputGroupSelect({ onChange, prevValue, values, label, name }) {
+function InputGroupSelect({
+  onChange,
+  prevValue,
+  values,
+  label,
+  name,
+  defaultValue,
+}) {
   return (
     <div className="form-group">
       <label htmlFor="inputGroupSelect01" style={{ marginLeft: "2px" }}>
@@ -12,7 +19,7 @@ function InputGroupSelect({ onChange, prevValue, values, label, name }) {
         onChange={onChange}
         name={name}
       >
-        <option>{prevValue || "Alege tipul postării..."}</option>
+        <option>{prevValue || `Alege ${defaultValue}...`}</option>
         {values.map((value) => (
           <option key={value}>{value}</option>
         ))}

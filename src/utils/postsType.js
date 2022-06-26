@@ -12,7 +12,7 @@ const postsType = () => {
   // for category section
   const categories = [
     ["Toate"],
-    ["Facultate"],
+    ["Universitate"],
     ["Specializare", ["EA", "MON", "TST"]],
     ["Grupe", years],
   ];

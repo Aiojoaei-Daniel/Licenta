@@ -74,7 +74,7 @@ function EditPost() {
           <button type="submit" onClick={updatePost} className="btn edit-btn">
             Modifică
           </button>
-          <Link to="/" className="btn cancel">
+          <Link to="/" className="btn cancel-btn">
             Anulează
           </Link>
         </form>

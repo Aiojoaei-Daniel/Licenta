@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { collection, addDoc } from "firebase/firestore";
-// import { Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 
 import { db } from "../../firebase-config";

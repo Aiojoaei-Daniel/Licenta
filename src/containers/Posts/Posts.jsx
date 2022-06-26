@@ -22,7 +22,7 @@ function Posts({ setPost }) {
     onPageChange,
     handlePostClick,
     deletePost,
-  } = PostsLogic(setPost, searchValue);
+  } = PostsLogic(setPost, searchValue, setSearchValue);
 
   return (
     <div className="posts-section" id="posts-section">
@@ -44,7 +44,7 @@ function Posts({ setPost }) {
         </form>
       </div>
       {pagedPosts.length === 0 ? (
-        <NotFound type="postare" />
+        <NotFound />
       ) : (
         <div className="posts-body">
           <div className="grid-posts">

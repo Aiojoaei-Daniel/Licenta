@@ -8,12 +8,10 @@ form > .btn {
 }
 
 .edit-btn:hover {
-  background-color: green;
   color: var(--color-btns);
 }
 
-.cancel:hover {
-  background-color: black;
+.cancel-btn:hover {
   color: var(--color-btns);
 }
 
@@ -27,7 +25,6 @@ form > .btn {
 
 .edit-post-page > img {
   align-self: center;
-  /* width: clamp(100px, 90%, 600px); */
   width: 40%;
 }
 

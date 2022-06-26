@@ -9,6 +9,7 @@
   border-top: 6px solid var(--main-color);
   width: 40%;
   border-radius: 5px;
+  padding-top: 1rem;
 }
 
 .form-group {
@@ -22,7 +23,6 @@
 }
 
 .register-btn:hover {
-  background-color: green;
   color: var(--color-btns);
 }
 

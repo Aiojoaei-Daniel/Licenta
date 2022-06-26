@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import AuthProvider from "./contexts/AuthContext";
 import PostsProvider from "./contexts/PostsContext";
 
-import { PrivateRoute, Navbar, Footer } from "./components";
+import { PrivateRoute, NotFound, Navbar, Footer } from "./components";
 import {
   EditPost,
   Posts,
@@ -20,9 +20,7 @@ import "./App.css";
 
 function App() {
   const [post, setPost] = useState({});
-  const pathname = window.location.pathname
-    .slice(1)
-    .slice(0, window.location.pathname.length - 1);
+
   return (
     <BrowserRouter>
       <Switch>
@@ -48,11 +46,11 @@ function App() {
             <Route path="/about" component={About} />
             <Route
               exact
-              // path="/Posts"
               path="/"
               render={(props) => <Posts {...props} setPost={setPost} />}
             />
-            <Footer pathname={pathname} />
+            <Redirect to="/" />
+            <Footer />
           </PostsProvider>
         </AuthProvider>
       </Switch>

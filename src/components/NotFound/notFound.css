@@ -2,7 +2,6 @@
   width: 40%;
 }
 
-.not-found-posts,
 .not-found {
   max-height: 50rem;
   margin-top: 6rem;
@@ -10,7 +9,6 @@
   justify-content: space-around;
 }
 
-.not-found-posts > h1,
 .not-found > h1 {
   max-height: 10rem;
   align-self: center;

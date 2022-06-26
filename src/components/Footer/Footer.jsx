@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import upIcon from "../../images/posts/upIcon.svg";
@@ -7,7 +6,7 @@ import "./footer.css";
 
 export default function Footer() {
   return (
-    <footer className="footer bg-col">
+    <footer className="footer">
       <a href="#navbar">
         <img src={upIcon} alt="" />
       </a>
@@ -20,14 +19,14 @@ export default function Footer() {
           to="/student-register/#student-form"
           className="big-size-text"
         >
-          Apasă aici pentru înregistrare!
+          Apasă aici pentru a te abona!
         </HashLink>
         <HashLink
           smooth
           to="/student-register/#student-form"
           className="small-screen-text"
         >
-          Înregistrare-te aici.
+          Abonează-te aici.
         </HashLink>
       </div>
       <div className="college-data">

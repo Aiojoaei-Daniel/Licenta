@@ -15,24 +15,31 @@ const Login = () => {
   return !currentUser ? (
     <>
       <div className="login-page" id="login-page">
-        <h1 className="login-page-title">Conectare Cadru Universitar</h1>
+        <h1 className="login-page-title">Conectare Admin</h1>
         {error && <Alert error={error} />}
         <div className="login-body">
           <Form className="login-form" onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control
+                type="email"
+                ref={emailRef}
+                required
+                placeholder="Email Admin"
+              />
             </Form.Group>
             <Form.Group id="password" className="password">
               <Form.Label>Parolă</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
+              <Form.Control
+                type="password"
+                ref={passwordRef}
+                required
+                placeholder="Parola Admin"
+              />
             </Form.Group>
             <button className="btn login-btn" type="submit" disabled={loading}>
               Conectare
             </button>
-            <Link to="/" className="btn cancel">
-              Anulează
-            </Link>
           </Form>
           <div id="img-container">
             <img id="login-img" src={loginImg} alt="" />

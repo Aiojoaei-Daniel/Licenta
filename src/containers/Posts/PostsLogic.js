@@ -9,7 +9,7 @@ import { usePosts } from "../../contexts/PostsContext";
 import { useAuth } from "../../contexts/AuthContext";
 import postsType from "./../../utils/postsType";
 
-function PostsLogic(setPost, searchValue) {
+function PostsLogic(setPost, searchValue, setSearchValue) {
   const { types } = postsType();
   const { currentUser } = useAuth();
 
@@ -32,27 +32,11 @@ function PostsLogic(setPost, searchValue) {
     let filteredPosts = [];
     const pageSize = 6;
 
-    // let filteredPosts = [...posts];
-    // console.log(filteredPosts);
-    // filteredPosts.filter(
-    //   (post) =>
-    //     // post.title.toLowerCase().startsWith(searchValue.toLowerCase()) ||
-    //     post.type === selectedType || selectedType === "Toate"
-    // );
-    // console.log(filteredPosts);
-
-    // if (searchValue !== "") {
     filteredPosts = posts.filter(
       (post) =>
-        (post.title.toLowerCase().startsWith(searchValue.toLowerCase()) &&
-          post.type == selectedType) ||
-        selectedType === "Toate"
+        (post.type == selectedType || selectedType === "Toate") &&
+        post.title.toLowerCase().includes(searchValue.toLowerCase())
     );
-    // } else {
-    // filteredPosts = posts.filter(
-    //   (post) => post.type == selectedType || selectedType === "Toate"
-    // );
-    // }
 
     const postsCount = filteredPosts.length;
     const sorted = _.orderBy(filteredPosts, ["date", "time"], ["desc", "desc"]);

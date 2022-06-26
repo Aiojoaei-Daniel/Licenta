@@ -1,9 +1,13 @@
 .footer {
   background: var(--main-color);
   width: 100%;
-  height: 10rem;
-  display: flex;
-  justify-content: space-between;
+  max-height: 10rem;
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  place-items: center;
 }
 
 .body-footer {
@@ -11,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  /* width: 40%; */
 }
 
 .body-footer > p,
@@ -31,27 +35,33 @@
 .footer > a {
   display: flex;
   align-items: center;
-  width: 20%;
+  width: 35%;
+  height: 50%;
+  justify-self: flex-start;
+  margin-left: 1rem;
 }
 
 .footer > a > img {
-  height: 4rem;
-  width: 4rem;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 
 .college-data {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 20%;
+  /* justify-content: center; */
+  width: 100%;
+  /* justify-self: flex-end; */
 }
 .college-data > a {
+  margin-right: 1rem;
   color: white;
-  align-self: center;
+  align-self: flex-end;
   font-size: 1rem;
   text-align: center;
   min-height: 2rem;
-  max-width: 30rem;
+  width: 60%;
 }
 
 .college-data > a:hover {
