@@ -18,7 +18,7 @@ const postsType = () => {
   ];
 
   // for post form
-  const postType = ["Facultate", "EA", "MON", "TST", ...years];
+  const postType = ["Universitate", "EA", "MON", "TST", ...years];
 
   return { categories, postType, specializations, years };
 };

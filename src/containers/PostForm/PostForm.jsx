@@ -34,7 +34,7 @@ function PostForm() {
         newTitle.length > 2 &&
         newMessage.length > 5 &&
         type !== "" &&
-        type !== "Alege tipul postării..."
+        type !== "Alege categoria postării..."
       ) {
         setError("");
 
@@ -70,6 +70,7 @@ function PostForm() {
           <div className="form-group" id="form-group">
             <label htmlFor="title">Titlul postării</label>
             <input
+              placeholder="Titlul postării..."
               name="title"
               type="text"
               className="form-control"
@@ -84,6 +85,7 @@ function PostForm() {
           <div className="form-group">
             <label htmlFor="message">Conținutul postării</label>
             <textarea
+              placeholder="Conținutul postării..."
               className="form-control"
               id="message"
               rows="3"
@@ -98,6 +100,7 @@ function PostForm() {
             values={postType}
             label="Tipul postării"
             name="type"
+            defaultValue="categoria postării"
           />
           <button
             type="submit"
@@ -105,7 +108,7 @@ function PostForm() {
             id="submit-btn"
             className="btn edit-btn"
           >
-            Creeaza o postare
+            Creează o postare
           </button>
           <Link to="/" className="btn cancel-btn">
             Anulează
