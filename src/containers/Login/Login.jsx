@@ -34,7 +34,7 @@ const Login = () => {
                 type="password"
                 ref={passwordRef}
                 required
-                placeholder="Parola Admin"
+                placeholder="Parolă Admin"
               />
             </Form.Group>
             <button className="btn login-btn" type="submit" disabled={loading}>

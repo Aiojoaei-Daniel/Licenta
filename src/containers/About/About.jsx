@@ -17,7 +17,7 @@ export default function About() {
           la foarte importante la mai puțin importante într-un singur loc.{" "}
           Postările pot avea ca grup țintă toți studenții universității,
           studenții unei specializări sau poate doar o anumită grupă, și pot fi
-          organizate in funcție de aceste criterii.
+          organizate în funcție de aceste criterii.
         </p>
         <p className="text2">
           Cadrele universitare se conectează cu anumite conturi speciale și pot
@@ -30,10 +30,10 @@ export default function About() {
         <p className="text3">
           Studenții urmează să aibă o viață mai ușoară cu această aplicație,
           putând vedea anunțurile în timp real și sortându-le pentru a citi doar
-          ce ii interesează. Nu mai este nevoie să fii în nenumărate grupuri pe
+          ce îi interesează. Nu mai este nevoie să fii în nenumărate grupuri pe
           facebook sau să urmărești toate tipurile de aplicații și email-uri
           pentru a fi la curent cu noutățile. Niciun profesor nu va fi împotriva
-          acestei aplicații pentru că este foarte ușor de utilizat. De asemenea
+          acestei aplicații pentru că este foarte ușor de utilizat. De asemenea,
           studenții au posibilitatea de a se abona pentru a fi notificați pe
           email când se postează ceva ce ține de universitate, specializarea sau
           grupa din care fac parte.

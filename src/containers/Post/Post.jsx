@@ -27,7 +27,7 @@ function Post() {
         <img src={postImg} alt="" />
       </div>
       <HashLink smooth to="/#posts-section">
-        <button className="back-btn">Inapoi la postari</button>
+        <button className="back-btn">Înapoi la postări</button>
       </HashLink>
     </div>
   );

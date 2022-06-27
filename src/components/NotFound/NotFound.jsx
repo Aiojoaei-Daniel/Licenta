@@ -8,7 +8,7 @@ function NotFound() {
     <div className="not-found">
       <h1>
         <div className="line"></div>
-        Nimic nu corespunde cautării.
+        Nimic nu corespunde căutării.
       </h1>
       <img className="not-found-img" src={notFoundImg} alt="" />
     </div>

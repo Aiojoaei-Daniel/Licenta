@@ -23,7 +23,7 @@ function Navbar() {
             Acasă
           </Link>
           <HashLink smooth to="/#posts-section" className="navbar-btn">
-            Postari
+            Postări
           </HashLink>
           {currentUser && (
             <HashLink
