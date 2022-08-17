@@ -11,7 +11,6 @@ export function usePosts() {
 
 function PostsProvider({ children }) {
   const postsCollectionRef = collection(db, "posts");
-
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

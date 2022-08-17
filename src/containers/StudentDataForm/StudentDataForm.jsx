@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
-import { Form } from "react-bootstrap";
 
 import { db } from "../../firebase-config";
 import { getDocs } from "firebase/firestore";
-import { useAuth } from "./../../contexts/AuthContext";
 
 import InputGroupSelect from "../../components/InputGroupSelect";
 import postsType from "../../utils/postsType";
@@ -25,7 +23,6 @@ function StudentDataForm() {
   const [students, setStudents] = useState([]);
   const [studentSpecialization, setStudentSpecialization] = useState();
   const [error, setError] = useState();
-  // const { students } = useAuth();
 
   useEffect(() => {
     const getStudents = async () => {

@@ -118,13 +118,8 @@
   align-self: flex-end;
 }
 
-.post-edit-btns > a {
-  /* max-width: 50%; */
-}
-
 .post-edit-btns {
   display: flex;
-  /* justify-content: flex-end; */
 }
 
 .post-edit-btns > a {

@@ -19,12 +19,7 @@ const SendNotification = () => {
       type: type,
       email: studentEmails,
     };
-    // const emailData = {
-    //   title: title,
-    //   type: type,
-    //   email: "aiojoaei.daniel@gmail.com",
-    // };
-    console.log(studentEmails, filteredStudents, type);
+
     if (studentEmails !== []) {
       emailjs.send(
         "service_g3elv0p",

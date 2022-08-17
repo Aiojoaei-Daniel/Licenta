@@ -12,7 +12,6 @@ import {
   Post,
   PostForm,
   StudentDataForm,
-  StudentLogin,
   About,
 } from "./containers";
 
@@ -28,10 +27,6 @@ function App() {
           <PostsProvider>
             <Navbar />
             <Route path="/login" component={Login} />
-            <Route
-              path="/student-login"
-              render={(props) => <StudentLogin {...props} />}
-            />
             <Route
               path="/student-register"
               render={(props) => <StudentDataForm {...props} />}
